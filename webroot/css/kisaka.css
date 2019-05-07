@@ -1,0 +1,33 @@
+* {
+	margin:0; padding:0; 		/*全要素のマージン・パディングをリセット*/
+}
+
+body {
+	font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans',
+	'ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic'
+}
+
+
+.header_flxcont{
+  display: flex;
+}
+
+.header_flxitem1{
+	width: 90%;
+}
+.header_flxitem2{
+	width: 10%;
+	float:right;
+	font-size: 11px;
+}
+
+.main_flxcont{
+  display: flex;
+}
+
+.main_flxitem1{
+	width: 20%;
+}
+.main_flxitem2{
+	width: 80%;
+}
