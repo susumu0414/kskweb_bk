@@ -13,8 +13,6 @@ class Frm1000Controller extends AppController
     // コンポーネントの読み込み
     $this->loadComponent('Common');
 
-    //権限チェック
-
     // t_uriテーブルのモデル呼び出し
     $this->loadModel('TUri');
 
@@ -24,6 +22,12 @@ class Frm1000Controller extends AppController
 
   public function index() {
     $t_uri=[];
+
+    //権限チェック
+    $ret=$this->Common->checkAuth(basename(__FILE__));
+
+
+
     if ($this->request->is('post')) {
       // t_uriテーブルから更新履歴情報取得
       $t_uri = $this->TUri->find('all')->limit(10);
