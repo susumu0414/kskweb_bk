@@ -1,6 +1,4 @@
 <h1>Top</h1>
-<p><?= $message ?></p>
-
 
 <?php foreach ($t_uri as $row): ?>
     <tr>

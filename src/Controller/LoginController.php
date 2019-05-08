@@ -35,6 +35,7 @@ class LoginController extends AppController
         // セッションデータの書き込み
         $session->write('MTanto.tan_cd', $mtanto[0] -> tan_cd);
         $session->write('MTanto.tan_nm', $mtanto[0] -> tan_nm);
+        $session->write('MTanto.auth_kbn', $mtanto[0] -> auth_kbn);
         // トップ画面に遷移
         return $this->redirect(['controller' => 'Top', 'action' => 'index']);
       }
