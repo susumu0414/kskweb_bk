@@ -26,8 +26,6 @@ class Frm1000Controller extends AppController
     //権限チェック
     $ret=$this->Common->checkAuth(basename(__FILE__));
 
-
-
     if ($this->request->is('post')) {
       // t_uriテーブルから更新履歴情報取得
       $t_uri = $this->TUri->find('all')->limit(10);

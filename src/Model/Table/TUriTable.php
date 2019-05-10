@@ -23,7 +23,9 @@ use Cake\Validation\Validator;
  */
 class TUriTable extends Table
 {
-
+  public static function defaultConnectionName() {
+          return 'kskdb';
+      }
     /**
      * Initialize method
      *

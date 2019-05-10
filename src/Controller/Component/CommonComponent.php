@@ -16,7 +16,6 @@ class CommonComponent extends Component
      */
     protected $_defaultConfig = [];
 
-
     public function initialize(array $config) {
       parent::initialize($config);
 
