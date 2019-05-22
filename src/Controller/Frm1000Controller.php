@@ -2,8 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-use Cake\ORM\TableRegistry;
-
+use Cake\Datasource\ConnectionManager;
 
 class Frm1000Controller extends AppController
 {
@@ -13,9 +12,6 @@ class Frm1000Controller extends AppController
     // コンポーネントの読み込み
     $this->loadComponent('Common');
 
-    // t_uriテーブルのモデル呼び出し
-    $this->loadModel('TUri');
-
     // レイアウトの設定
     $this->viewBuilder()->setLayout('kskweb_default');
   }
@@ -23,17 +19,73 @@ class Frm1000Controller extends AppController
   public function index() {
     $t_uri=[];
 
-    //権限チェック
+    // 権限チェック(&ページ名称取得)
     $ret=$this->Common->checkAuth(basename(__FILE__));
-
-    if ($this->request->is('post')) {
-      // t_uriテーブルから更新履歴情報取得
-      $t_uri = $this->TUri->find('all')->limit(10);
-      $this->log($t_uri, LOG_DEBUG);
-      $this->set('t_uri',$t_uri);
+    if ($ret==false){
+      $this->log("権限なし", LOG_DEBUG);
+      exit;
     }
     else{
-      $this->set('t_uri',$t_uri);
+      // ページ名称をセット
+      $this->set('page_nm',$ret);
     }
+
+    if ($this->request->is('post')) {
+      $result = [];
+
+      $connection = ConnectionManager::get('kskdb');
+      // 検索用クエリーの呼び出し(メソッドの前に$this->が必要)
+      $query=$this->createSql($this->request->data);
+      $result = $connection->query($query)->fetchAll();
+      // 検索結果をセット
+      $this->set('t_uri',$result);
+    }
+    else{
+      $this->set('t_uri',$result);
+    }
+  }
+
+  private function createSql($objParam){
+
+    $strSQL = "";
+
+    $strSQL = $strSQL . "SELECT";
+    $strSQL = $strSQL . "  TJ.jyucyu_no,";
+    $strSQL = $strSQL . "  TJ.ymd,";
+    $strSQL = $strSQL . "  TJ.tk_cd,";
+    $strSQL = $strSQL . "  TJ.tk_eda_cd,";
+    $strSQL = $strSQL . "  TJ.tokusaki_nm,";
+    $strSQL = $strSQL . "  TJ.nonyusaki_nm,";
+    $strSQL = $strSQL . "  TJ.biko,";
+    $strSQL = $strSQL . "  TJ.biko2,";
+    $strSQL = $strSQL . "  TJ.biko3,";
+    $strSQL = $strSQL . "  TJM.row_no,";
+    $strSQL = $strSQL . "  TJM.jhin_cd,";
+    $strSQL = $strSQL . "  TJM.shin_cd,";
+    $strSQL = $strSQL . "  TJM.hin_nm,";
+    $strSQL = $strSQL . "  TJM.jyucyu_su,";
+    $strSQL = $strSQL . "  MJH.location_no,";
+    $strSQL = $strSQL . "  MS.now_stock - MS.order_su zaiko_su ";
+    $strSQL = $strSQL . "FROM";
+    $strSQL = $strSQL . "  t_jyucyu_denpyou TJ";
+    $strSQL = $strSQL . "  LEFT JOIN t_jyucyu_meisai TJM";
+    $strSQL = $strSQL . "    ON TJ.jyucyu_no = TJM.jyucyu_no";
+    $strSQL = $strSQL . "  LEFT JOIN m_hin MH";
+    $strSQL = $strSQL . "    ON TJM.shin_cd = MH.hin_cd";
+    $strSQL = $strSQL . "  LEFT JOIN m_j_hin MJH";
+    $strSQL = $strSQL . "    ON MH.zhin_cd = MJH.hin_cd";
+    $strSQL = $strSQL . "  LEFT JOIN m_stock MS";
+    $strSQL = $strSQL . "    ON MJH.hin_cd = MS.hin_cd ";
+    $strSQL = $strSQL . "WHERE";
+    $strSQL = $strSQL . "  1 = 1";
+    $strSQL = $strSQL . "  AND TJ.jyucyu_no = '". $objParam['jyucyu_no'] . "' ";
+    // ロケーションの先頭2ケタが数字のもの
+    $strSQL = $strSQL . "  AND MJH.location_no ~ '^[0-9][0-9]' ";
+    $strSQL = $strSQL . "ORDER BY";
+    $strSQL = $strSQL . "  MJH.location_no,";
+    $strSQL = $strSQL . "  TJM.row_no";
+
+    $this->log("クエリー：".$strSQL, LOG_DEBUG);
+    return $strSQL;
   }
 }

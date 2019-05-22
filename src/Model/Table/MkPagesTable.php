@@ -38,7 +38,8 @@ class MkPagesTable extends Table
         parent::initialize($config);
 
         $this->setTable('mk_pages');
-        $this->setDisplayField('id');
+        // $this->setDisplayField('id');
+        $this->setDisplayField('page_id');
         $this->setPrimaryKey('id');
 
         // $this->belongsTo('Pages', [
