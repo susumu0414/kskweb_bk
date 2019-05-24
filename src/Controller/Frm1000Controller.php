@@ -4,6 +4,15 @@ namespace App\Controller;
 use App\Controller\AppController;
 use Cake\Datasource\ConnectionManager;
 
+// EXCEL用
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Reader\Xlsx as XlsxReader;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx as XlsxWriter;
+use PhpOffice\PhpSpreadsheet\Style;
+use PhpOffice\PhpSpreadsheet\Style\Border;
+use PhpOffice\PhpSpreadsheet\Style\Fill;
+
 class Frm1000Controller extends AppController
 {
   public function initialize() {
@@ -27,9 +36,14 @@ class Frm1000Controller extends AppController
     }
     // 印刷ボタン押下時処理
     if (isset($this->request->data['btn_nm'])=="btn_print"){
-      
-    }
+      // $this->autoRender = FALSE;
+      $connection = ConnectionManager::get('kskdb');
+      // クエリー生成(メソッド呼び出しはメソッド名の前に$this->が必要)
+      $query=$this->createSql($this->request->data);
+      $result = $connection->query($query)->fetchAll('assoc');
 
+      $this->outputExcel($result,$this->request->data);
+    }
   }
 
   public function getAjaxData() {
@@ -38,7 +52,7 @@ class Frm1000Controller extends AppController
       $result = [];
 
       $connection = ConnectionManager::get('kskdb');
-      // 関数(メソッド)の呼び出し(メソッドの前に$this->が必要)
+      // クエリー生成(メソッド呼び出しはメソッド名の前に$this->が必要)
       $query=$this->createSql($this->request->data);
       $result = $connection->query($query)->fetchAll('assoc');
       // 検索結果をセット
@@ -46,7 +60,6 @@ class Frm1000Controller extends AppController
       echo json_encode($result);
     }
   }
-
 
   private function createSql($objParam){
 
@@ -90,5 +103,67 @@ class Frm1000Controller extends AppController
 
     $this->log("クエリー：".$strSQL, LOG_DEBUG);
     return $strSQL;
+  }
+
+
+  private function outputExcel($result,$objParam){
+
+    $reader = new XlsxReader();
+    $spreadsheet = $reader->load(ROOT .'/EXCEL/Shipping(jyucyu_no).xlsm'); //雛形EXCEL読込
+    $sheet = $spreadsheet->getActiveSheet();
+
+    // セル番地で書く
+    $sheet->setCellValue('E3', $result[0]['jyucyu_no']);
+    $sheet->setCellValue('P3', $objParam['biko']);
+    $sheet->setCellValue('E4', $result[0]['tk_cd']);
+    $sheet->setCellValue('P4', $result[0]['tokusaki_nm']);
+    $sheet->setCellValue('E5', $result[0]['tk_eda_cd']);
+    $sheet->setCellValue('P5', $result[0]['nonyusaki_nm']);
+    $sheet->setCellValue('E6', $result[0]['biko']);
+    $sheet->setCellValue('E7', $result[0]['biko2']);
+    $sheet->setCellValue('E8', $result[0]['biko3']);
+
+    $i_rowcnt=1;
+    $i_loop = 12;
+    foreach($result as $row){
+      $sheet->setCellValue('A'.$i_loop, $i_rowcnt);
+      $sheet->setCellValue('C'.$i_loop, $row['location_no']);
+      if($row['shin_cd']<>"" && $row['jhin_cd']<>$row['shin_cd']){
+        $sheet->setCellValue('F'.$i_loop, "★");
+      }
+      $sheet->setCellValue('G'.$i_loop, $row['shin_cd']);
+      $sheet->setCellValue('M'.$i_loop, $row['jyucyu_su']);
+      if($row['zaiko_su'] <10 ){
+        $sheet->setCellValue('O'.$i_loop, $row['zaiko_su']);
+      }
+      $sheet->setCellValue('R'.$i_loop, $row['hin_nm']);
+      $sheet->setCellValue('AB'.$i_loop, $row['jhin_cd']);
+
+      if ($i_loop%2==0){
+        // 偶数行はなにもしない
+      }
+      else {
+        // 奇数行背景をぬる
+        // セルの範囲を指定して、スタイルを反映
+        $sheet->getStyle('A'.$i_loop.':AE'.$i_loop)->getFill()->setFillType(Fill::FILL_SOLID)->getStartColor()->setARGB('e1e2fa');
+      }
+      $i_loop = $i_loop + 1;
+      $i_rowcnt = $i_rowcnt + 1;
+    }
+
+    //ダウンロード用
+    header("Content-Description: File Transfer");
+    $work = "Content-Disposition: attachment;filename=出庫指示書(受注番号)_".$result[0]['jyucyu_no']. ".xlsm";
+    header($work);
+    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    header('Content-Transfer-Encoding: binary');
+    header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+    header('Expires: 0');
+
+    ob_end_clean(); //バッファ消去
+
+    $writer = new XlsxWriter($spreadsheet);
+    $writer->save('php://output');
+    exit;
   }
 }
