@@ -7,6 +7,13 @@ body {
 	'ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic'
 }
 
+header {
+  width : 100% ;
+  height: 70px;
+  border: 2px solid #cbcbcb;
+  background-color: #93b3f7;
+}
+
 
 .header_flxcont{
   display: flex;
@@ -26,8 +33,32 @@ body {
 }
 
 .main_flxitem1{
-	width: 20%;
+	width: 15%;
 }
 .main_flxitem2{
-	width: 80%;
+	width: 85%;
+}
+
+/* ↓↓↓↓↓ detatables用 ↓↓↓↓↓ */
+#tbl_result {
+  white-space: nowrap; /* 横幅のMAXに達しても改行しない */
+}
+#tbl_result tr:hover{
+  background-color: #FC9D9D;  /* ホバー時の行の色 */
+}
+/* DataTablesのヘッダー部 */
+#tbl_result_wrapper .dataTables_scrollHeadInner,th.sorting,th.sorting_asc,th.sorting_desc
+{
+  color: #ffffff;
+  background-color: #516C9D;
+}
+/* ↑↑↑↑↑ detatables用 ↑↑↑↑↑ */
+
+footer {
+  clear: both;
+  height: 100px;
+  width : 100% ;
+  border: 2px solid #cbcbcb;
+  background-color: #28385E;
+  color: #ffffff;
 }

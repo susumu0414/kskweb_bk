@@ -8,17 +8,13 @@ class Frm1000Controller extends AppController
 {
   public function initialize() {
     parent::initialize();
-
     // コンポーネントの読み込み
     $this->loadComponent('Common');
-
     // レイアウトの設定
     $this->viewBuilder()->setLayout('kskweb_default');
   }
 
   public function index() {
-    $t_uri=[];
-
     // 権限チェック(&ページ名称取得)
     $ret=$this->Common->checkAuth(basename(__FILE__));
     if ($ret==false){
@@ -29,21 +25,28 @@ class Frm1000Controller extends AppController
       // ページ名称をセット
       $this->set('page_nm',$ret);
     }
+    // 印刷ボタン押下時処理
+    if (isset($this->request->data['btn_nm'])=="btn_print"){
+      
+    }
 
-    if ($this->request->is('post')) {
+  }
+
+  public function getAjaxData() {
+    $this->autoRender = FALSE;
+    if($this->request->is('ajax')) {
       $result = [];
 
       $connection = ConnectionManager::get('kskdb');
-      // 検索用クエリーの呼び出し(メソッドの前に$this->が必要)
+      // 関数(メソッド)の呼び出し(メソッドの前に$this->が必要)
       $query=$this->createSql($this->request->data);
-      $result = $connection->query($query)->fetchAll();
+      $result = $connection->query($query)->fetchAll('assoc');
       // 検索結果をセット
-      $this->set('t_uri',$result);
-    }
-    else{
-      $this->set('t_uri',$result);
+      header('Content-Type: application/json');
+      echo json_encode($result);
     }
   }
+
 
   private function createSql($objParam){
 
