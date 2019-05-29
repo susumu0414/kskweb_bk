@@ -16,8 +16,12 @@
     </ul>
 </nav>
 <div class="mkPageFiles view large-9 medium-8 columns content">
-    <h3><?= h($mkPageFile->id) ?></h3>
+    <h3><?= h($mkPageFile->page_nm) ?></h3>
     <table class="vertical-table">
+        <tr>
+            <th scope="row"><?= __('Menue Kbn') ?></th>
+            <td><?= h($mkPageFile->menue_kbn) ?></td>
+        </tr>
         <tr>
             <th scope="row"><?= __('Page Id') ?></th>
             <td><?= h($mkPageFile->page_id) ?></td>
@@ -41,10 +45,6 @@
         <tr>
             <th scope="row"><?= __('Id') ?></th>
             <td><?= $this->Number->format($mkPageFile->id) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Menue Kbn') ?></th>
-            <td><?= $this->Number->format($mkPageFile->menue_kbn) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Sort') ?></th>

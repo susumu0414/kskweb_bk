@@ -17,8 +17,8 @@
     <fieldset>
         <legend><?= __('Add Mk Page File') ?></legend>
         <?php
-            echo $this->Form->control('page_id');
             echo $this->Form->control('menue_kbn');
+            echo $this->Form->control('page_id',["type" => "text"]);
             echo $this->Form->control('page_nm');
             echo $this->Form->control('url');
             echo $this->Form->control('file_nm');

@@ -25,7 +25,6 @@ class MkPageFilesTableTest extends TestCase
      */
     public $fixtures = [
         'app.MkPageFiles',
-        'app.Pages',
         'app.MkAuthFiles'
     ];
 
@@ -51,6 +50,16 @@ class MkPageFilesTableTest extends TestCase
         unset($this->MkPageFiles);
 
         parent::tearDown();
+    }
+
+    /**
+     * Test defaultConnectionName method
+     *
+     * @return void
+     */
+    public function testDefaultConnectionName()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
     }
 
     /**

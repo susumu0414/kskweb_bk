@@ -7,15 +7,14 @@ use Cake\ORM\Entity;
  * MkPageFile Entity
  *
  * @property int $id
+ * @property string $menue_kbn
  * @property string $page_id
- * @property int $menue_kbn
  * @property string|null $page_nm
  * @property string|null $url
  * @property string $file_nm
  * @property int|null $sort
  * @property string|null $del_flg
  *
- * @property \App\Model\Entity\Page $page
  * @property \App\Model\Entity\MkAuthFile[] $mk_auth_files
  */
 class MkPageFile extends Entity
@@ -31,14 +30,13 @@ class MkPageFile extends Entity
      * @var array
      */
     protected $_accessible = [
-        'page_id' => true,
         'menue_kbn' => true,
+        'page_id' => true,
         'page_nm' => true,
         'url' => true,
         'file_nm' => true,
         'sort' => true,
         'del_flg' => true,
-        'page' => true,
         'mk_auth_files' => true
     ];
 }

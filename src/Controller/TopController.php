@@ -9,17 +9,17 @@ class TopController extends AppController
 {
   public function initialize() {
     parent::initialize();
-    // tk_updatelogsテーブルのモデル呼び出し
-    $this->loadModel('TkUpdatelogFiles');
+    // テーブルのモデル呼び出し
+    $this->loadModel('MkUpdatelogFiles');
 
     // レイアウトの設定
     $this->viewBuilder()->setLayout('kskweb_default');
   }
 
   public function index() {
-    // tk_updatelogsテーブルから更新履歴情報取得
-    $TkUpdatelogFiles = $this->TkUpdatelogFiles->find('all');
-    $this->log($TkUpdatelogFiles, LOG_DEBUG);
-    $this->set('tk_updatelog_files',$TkUpdatelogFiles);
+    // 更新履歴情報取得
+    $MkUpdatelogFiles = $this->MkUpdatelogFiles->find('all');
+    $this->log($MkUpdatelogFiles, LOG_DEBUG);
+    $this->set('mk_updatelog_files',$MkUpdatelogFiles);
   }
 }

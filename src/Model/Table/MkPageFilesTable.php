@@ -9,7 +9,7 @@ use Cake\Validation\Validator;
 /**
  * MkPageFiles Model
  *
- * @property \App\Model\Table\PagesTable|\Cake\ORM\Association\BelongsTo $Pages
+ * @property |\Cake\ORM\Association\BelongsTo $Pages
  * @property \App\Model\Table\MkAuthFilesTable|\Cake\ORM\Association\HasMany $MkAuthFiles
  *
  * @method \App\Model\Entity\MkPageFile get($primaryKey, $options = [])
@@ -40,10 +40,6 @@ class MkPageFilesTable extends Table
         $this->setDisplayField('page_nm');
         $this->setPrimaryKey('id');
 
-        // $this->belongsTo('Pages', [
-        //     'foreignKey' => 'page_id',
-        //     'joinType' => 'INNER'
-        // ]);
         $this->hasMany('MkAuthFiles', [
             'foreignKey' => 'mk_page_file_id'
         ]);
@@ -62,7 +58,8 @@ class MkPageFilesTable extends Table
             ->allowEmptyString('id', 'create');
 
         $validator
-            ->integer('menue_kbn')
+            ->scalar('menue_kbn')
+            ->maxLength('menue_kbn', 15)
             ->requirePresence('menue_kbn', 'create')
             ->allowEmptyString('menue_kbn', false);
 

@@ -1,22 +1,22 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\MkAuthFilesTable;
+use App\Model\Table\MkUpdatelogFilesTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\MkAuthFilesTable Test Case
+ * App\Model\Table\MkUpdatelogFilesTable Test Case
  */
-class MkAuthFilesTableTest extends TestCase
+class MkUpdatelogFilesTableTest extends TestCase
 {
 
     /**
      * Test subject
      *
-     * @var \App\Model\Table\MkAuthFilesTable
+     * @var \App\Model\Table\MkUpdatelogFilesTable
      */
-    public $MkAuthFiles;
+    public $MkUpdatelogFiles;
 
     /**
      * Fixtures
@@ -24,8 +24,7 @@ class MkAuthFilesTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.MkAuthFiles',
-        'app.MkPageFiles'
+        'app.MkUpdatelogFiles'
     ];
 
     /**
@@ -36,8 +35,8 @@ class MkAuthFilesTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::getTableLocator()->exists('MkAuthFiles') ? [] : ['className' => MkAuthFilesTable::class];
-        $this->MkAuthFiles = TableRegistry::getTableLocator()->get('MkAuthFiles', $config);
+        $config = TableRegistry::getTableLocator()->exists('MkUpdatelogFiles') ? [] : ['className' => MkUpdatelogFilesTable::class];
+        $this->MkUpdatelogFiles = TableRegistry::getTableLocator()->get('MkUpdatelogFiles', $config);
     }
 
     /**
@@ -47,19 +46,9 @@ class MkAuthFilesTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->MkAuthFiles);
+        unset($this->MkUpdatelogFiles);
 
         parent::tearDown();
-    }
-
-    /**
-     * Test defaultConnectionName method
-     *
-     * @return void
-     */
-    public function testDefaultConnectionName()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
     }
 
     /**
@@ -78,16 +67,6 @@ class MkAuthFilesTableTest extends TestCase
      * @return void
      */
     public function testValidationDefault()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test buildRules method
-     *
-     * @return void
-     */
-    public function testBuildRules()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

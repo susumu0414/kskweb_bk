@@ -1,14 +1,14 @@
 <?php
 namespace App\Test\TestCase\Controller;
 
-use App\Controller\MkPageFilesController;
+use App\Controller\MkUpdatelogFilesController;
 use Cake\TestSuite\IntegrationTestTrait;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Controller\MkPageFilesController Test Case
+ * App\Controller\MkUpdatelogFilesController Test Case
  */
-class MkPageFilesControllerTest extends TestCase
+class MkUpdatelogFilesControllerTest extends TestCase
 {
     use IntegrationTestTrait;
 
@@ -18,8 +18,7 @@ class MkPageFilesControllerTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.MkPageFiles',
-        'app.MkAuthFiles'
+        'app.MkUpdatelogFiles'
     ];
 
     /**

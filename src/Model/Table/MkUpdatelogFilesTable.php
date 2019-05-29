@@ -7,18 +7,18 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * TkUpdatelogFiles Model
+ * MkUpdatelogFiles Model
  *
- * @method \App\Model\Entity\TkUpdatelogFile get($primaryKey, $options = [])
- * @method \App\Model\Entity\TkUpdatelogFile newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\TkUpdatelogFile[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\TkUpdatelogFile|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\TkUpdatelogFile|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\TkUpdatelogFile patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\TkUpdatelogFile[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\TkUpdatelogFile findOrCreate($search, callable $callback = null, $options = [])
+ * @method \App\Model\Entity\MkUpdatelogFile get($primaryKey, $options = [])
+ * @method \App\Model\Entity\MkUpdatelogFile newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\MkUpdatelogFile[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\MkUpdatelogFile|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\MkUpdatelogFile|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\MkUpdatelogFile patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\MkUpdatelogFile[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\MkUpdatelogFile findOrCreate($search, callable $callback = null, $options = [])
  */
-class TkUpdatelogFilesTable extends Table
+class MkUpdatelogFilesTable extends Table
 {
     public static function defaultConnectionName() {
             return 'kskweb_db';
@@ -33,7 +33,7 @@ class TkUpdatelogFilesTable extends Table
     {
         parent::initialize($config);
 
-        $this->setTable('tk_updatelog_files');
+        $this->setTable('mk_updatelog_files');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
     }

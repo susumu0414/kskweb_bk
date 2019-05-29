@@ -20,7 +20,6 @@
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('auth_kbn') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('mk_page_file_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('mk_page_file_page_nm') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -29,8 +28,7 @@
             <tr>
                 <td><?= $this->Number->format($mkAuthFile->id) ?></td>
                 <td><?= h($mkAuthFile->auth_kbn) ?></td>
-                <td><?= $mkAuthFile->has('mk_page_file') ? $this->Html->link($mkAuthFile->mk_page_file->id, ['controller' => 'MkPageFiles', 'action' => 'view', $mkAuthFile->mk_page_file->id]) : '' ?></td>
-                <td><?= h($mkAuthFile->mk_page_file->page_nm) ?></td>
+                <td><?= $mkAuthFile->has('mk_page_file') ? $this->Html->link($mkAuthFile->mk_page_file->page_nm, ['controller' => 'MkPageFiles', 'action' => 'view', $mkAuthFile->mk_page_file->id]) : '' ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $mkAuthFile->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $mkAuthFile->id]) ?>

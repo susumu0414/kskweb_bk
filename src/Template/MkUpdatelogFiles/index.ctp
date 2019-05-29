@@ -1,17 +1,17 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\TkUpdatelogFile[]|\Cake\Collection\CollectionInterface $tkUpdatelogFiles
+ * @var \App\Model\Entity\MkUpdatelogFile[]|\Cake\Collection\CollectionInterface $mkUpdatelogFiles
  */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Tk Updatelog File'), ['action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('New Mk Updatelog File'), ['action' => 'add']) ?></li>
     </ul>
 </nav>
-<div class="tkUpdatelogFiles index large-9 medium-8 columns content">
-    <h3><?= __('Tk Updatelog Files') ?></h3>
+<div class="mkUpdatelogFiles index large-9 medium-8 columns content">
+    <h3><?= __('Mk Updatelog Files') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
@@ -23,16 +23,16 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($tkUpdatelogFiles as $tkUpdatelogFile): ?>
+            <?php foreach ($mkUpdatelogFiles as $mkUpdatelogFile): ?>
             <tr>
-                <td><?= $this->Number->format($tkUpdatelogFile->id) ?></td>
-                <td><?= h($tkUpdatelogFile->release_ymd) ?></td>
-                <td><?= h($tkUpdatelogFile->version) ?></td>
-                <td><?= h($tkUpdatelogFile->note) ?></td>
+                <td><?= $this->Number->format($mkUpdatelogFile->id) ?></td>
+                <td><?= h($mkUpdatelogFile->release_ymd) ?></td>
+                <td><?= h($mkUpdatelogFile->version) ?></td>
+                <td><?= h($mkUpdatelogFile->note) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $tkUpdatelogFile->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $tkUpdatelogFile->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $tkUpdatelogFile->id], ['confirm' => __('Are you sure you want to delete # {0}?', $tkUpdatelogFile->id)]) ?>
+                    <?= $this->Html->link(__('View'), ['action' => 'view', $mkUpdatelogFile->id]) ?>
+                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $mkUpdatelogFile->id]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $mkUpdatelogFile->id], ['confirm' => __('Are you sure you want to delete # {0}?', $mkUpdatelogFile->id)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

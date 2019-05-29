@@ -4,14 +4,14 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * TkUpdatelogFile Entity
+ * MkUpdatelogFile Entity
  *
  * @property int $id
  * @property string $release_ymd
  * @property string $version
  * @property string|null $note
  */
-class TkUpdatelogFile extends Entity
+class MkUpdatelogFile extends Entity
 {
 
     /**

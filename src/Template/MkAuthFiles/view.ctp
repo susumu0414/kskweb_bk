@@ -24,7 +24,7 @@
         </tr>
         <tr>
             <th scope="row"><?= __('Mk Page File') ?></th>
-            <td><?= $mkAuthFile->has('mk_page_file') ? $this->Html->link($mkAuthFile->mk_page_file->id, ['controller' => 'MkPageFiles', 'action' => 'view', $mkAuthFile->mk_page_file->id]) : '' ?></td>
+            <td><?= $mkAuthFile->has('mk_page_file') ? $this->Html->link($mkAuthFile->mk_page_file->page_nm, ['controller' => 'MkPageFiles', 'action' => 'view', $mkAuthFile->mk_page_file->id]) : '' ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Id') ?></th>
