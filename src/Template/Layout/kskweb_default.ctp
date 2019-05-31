@@ -38,11 +38,13 @@
       <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
 
+      <!-- サイドメニュー用jsファイル読み込み -->
+      <?= $this->Html->script('side_menue',['block' => true]) ?>
+
       <title> <?= $this->fetch('title') ?> </title>
       <?= $this->Html->meta('icon') ?>
 
       <?= $this->Html->css('kisaka.css') ?>
-
       <?= $this->fetch('meta') ?>
       <?= $this->fetch('css') ?>
       <!-- 各ページごとのテンプレートファイルで呼び出すjsファイルを定義 -->

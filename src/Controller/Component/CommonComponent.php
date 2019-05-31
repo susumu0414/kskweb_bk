@@ -23,8 +23,8 @@ class CommonComponent extends Component
       $this->controller = $this->_registry->getController();
       $this->session = $this->controller->request->session();
 
-      $this->MkPages = TableRegistry::get('MkPages');
-      $this->MkAuthpages = TableRegistry::get('MkAuthpages');
+      $this->MkPageFiles = TableRegistry::get('MkPageFiles');
+      $this->MkAuthFiles = TableRegistry::get('MkAuthFiles');
     }
 
     public function checkAuth($file_name)
@@ -33,16 +33,19 @@ class CommonComponent extends Component
       $tan_cd=$this->session->read('MTanto.tan_cd');
       $auth_kbn=$this->session->read('MTanto.auth_kbn');
 
-      // mk_pagesテーブルから取得
-      $mk_authpages = $this->MkAuthpages->find('all',
-        array('conditions'=>
-        array('auth_kbn'=>$auth_kbn,'MkPages.file_nm'=>$file_name)))
-        ->contain('MkPages');
-      if (!$mk_authpages->isEmpty()) {
-        $result=$mk_authpages->toarray();
-        return $result[0]->mk_page->page_nm;
+      // mk_auth_filesテーブルから取得
+      $mkAuthFiles = $this->MkAuthFiles->find()->contain(['MkPageFiles'])
+        ->where(["auth_kbn" =>$auth_kbn])
+        ->andwhere(["MkPageFiles.file_nm" =>$file_name])
+        ->andwhere(["MkPageFiles.del_flg" =>"0"])
+        ->toArray();
+      if (isset($mkAuthFiles)) {
+        $result=$mkAuthFiles;
+        $this->log($result, LOG_DEBUG);
+        // ページ名称を戻り値にセット
+        return $result[0]['mk_page_file']['page_nm'];
       }
-      else{
+      else {
         return false;
       }
     }

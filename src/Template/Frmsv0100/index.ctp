@@ -1,5 +1,5 @@
 <!-- レイアウトファイルでページごとのjsファイルを読み込む -->
-<?= $this->Html->script('frm1000',['block' => true]) ?>
+<?= $this->Html->script('Frmsv0100',['block' => true]) ?>
 
 <h2><?= $page_nm ?></h2>
 
@@ -7,7 +7,7 @@
     <h3>検索条件入力</h3>
     <?=$this->Form->create(null,[
         'type' => 'post',
-        'url' => ['controller' => 'Frm1000', 'action' => 'index'],
+        'url' => ['controller' => 'Frmsv0100', 'action' => 'index'],
         'name' => 'form_input','id' => 'form_input'
       ]
     ) ?>

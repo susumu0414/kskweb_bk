@@ -39,6 +39,60 @@ header {
 	width: 85%;
 }
 
+/* ↓↓↓↓↓ サイドメニュー用 ↓↓↓↓↓ */
+#side_menue {
+  border: 2px solid #cbcbcb;
+}
+
+#side_menue ul {
+  list-style: none;
+  margin:0px 0px 0px 0px;
+  padding:0px 0px 0px 0px;
+}
+
+#side_menue > ul > li{
+  margin:0px 0px 0px 0px;
+  padding:0px 0px 0px 0px;
+  border-left: solid 6px #ff96f1;/*左側の線*/
+  border-bottom: solid 2px #dadada;/*下に灰色線*/
+  font-weight: bold;
+}
+
+#side_menue > ul > li >p:hover{
+  background-color:#FC9D9D ;
+}
+
+#side_menue > ul > li > ul >p:hover{
+  background-color:#FC9D9D ;
+}
+
+#side_menue > ul > li > ul >li >a:hover{
+  background-color:#FC9D9D ;
+}
+
+#side_menue > ul > li > ul > ul > li:hover{
+  background-color:#FC9D9D ;
+}
+
+#side_menue ul ul {
+  list-style: none;
+  font-size: 14px;
+  margin:0px 0px 0px 10px;
+  padding:0px 0px 0px 0px;
+}
+
+#side_menue ul ul li{
+  font-size: 12px;
+}
+
+.accordion_menue .inner {
+  display: none;
+}
+.accordion_menue p{
+  cursor: pointer;
+}
+/* ↑↑↑↑↑ サイドメニュー用 ↑↑↑↑↑ */
+
 /* ↓↓↓↓↓ detatables用 ↓↓↓↓↓ */
 #tbl_result {
   white-space: nowrap; /* 横幅のMAXに達しても改行しない */

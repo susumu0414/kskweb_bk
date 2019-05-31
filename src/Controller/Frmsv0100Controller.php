@@ -13,7 +13,7 @@ use PhpOffice\PhpSpreadsheet\Style;
 use PhpOffice\PhpSpreadsheet\Style\Border;
 use PhpOffice\PhpSpreadsheet\Style\Fill;
 
-class Frm1000Controller extends AppController
+class Frmsv0100Controller extends AppController
 {
   public function initialize() {
     parent::initialize();
@@ -28,7 +28,11 @@ class Frm1000Controller extends AppController
     $ret=$this->Common->checkAuth(basename(__FILE__));
     if ($ret==false){
       $this->log("権限なし", LOG_DEBUG);
-      exit;
+
+      $this->request->session()->destroy();
+      $this->Flash->set('権限が無い、もしくはセッションが切れました。ログインしなおしてください。'); //メッセージをセット
+      // トップ画面に遷移
+      return $this->redirect(['controller' => 'Login', 'action' => 'index']);
     }
     else{
       // ページ名称をセット
@@ -62,7 +66,6 @@ class Frm1000Controller extends AppController
   }
 
   private function createSql($objParam){
-
     $strSQL = "";
 
     $strSQL = $strSQL . "SELECT";
@@ -101,7 +104,6 @@ class Frm1000Controller extends AppController
     $strSQL = $strSQL . "  MJH.location_no,";
     $strSQL = $strSQL . "  TJM.row_no";
 
-    $this->log("クエリー：".$strSQL, LOG_DEBUG);
     return $strSQL;
   }
 
