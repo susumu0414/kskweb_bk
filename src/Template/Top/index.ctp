@@ -4,6 +4,7 @@
     <tr>
         <td><?= h($mk_updatelog_file->release_ymd) ?></td>
         <td><?= h($mk_updatelog_file->version) ?></td>
+        <td><?= h($mk_updatelog_file->title) ?></td>
         <td><?= h($mk_updatelog_file->note) ?></td>
         <br>
     </tr>

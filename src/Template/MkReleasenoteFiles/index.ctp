@@ -1,38 +1,40 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\MkUpdatelogFile[]|\Cake\Collection\CollectionInterface $mkUpdatelogFiles
+ * @var \App\Model\Entity\MkReleasenoteFile[]|\Cake\Collection\CollectionInterface $mkReleasenoteFiles
  */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Mk Updatelog File'), ['action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('New Mk Releasenote File'), ['action' => 'add']) ?></li>
     </ul>
 </nav>
-<div class="mkUpdatelogFiles index large-9 medium-8 columns content">
-    <h3><?= __('Mk Updatelog Files') ?></h3>
+<div class="mkReleasenoteFiles index large-9 medium-8 columns content">
+    <h3><?= __('Mk Releasenote Files') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('release_ymd') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('version') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('title') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('note') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($mkUpdatelogFiles as $mkUpdatelogFile): ?>
+            <?php foreach ($mkReleasenoteFiles as $mkReleasenoteFile): ?>
             <tr>
-                <td><?= $this->Number->format($mkUpdatelogFile->id) ?></td>
-                <td><?= h($mkUpdatelogFile->release_ymd) ?></td>
-                <td><?= h($mkUpdatelogFile->version) ?></td>
-                <td><?= h($mkUpdatelogFile->note) ?></td>
+                <td><?= $this->Number->format($mkReleasenoteFile->id) ?></td>
+                <td><?= h($mkReleasenoteFile->release_ymd) ?></td>
+                <td><?= h($mkReleasenoteFile->version) ?></td>
+                <td><?= h($mkReleasenoteFile->title) ?></td>
+                <td><?= h($mkReleasenoteFile->note) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $mkUpdatelogFile->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $mkUpdatelogFile->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $mkUpdatelogFile->id], ['confirm' => __('Are you sure you want to delete # {0}?', $mkUpdatelogFile->id)]) ?>
+                    <?= $this->Html->link(__('View'), ['action' => 'view', $mkReleasenoteFile->id]) ?>
+                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $mkReleasenoteFile->id]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $mkReleasenoteFile->id], ['confirm' => __('Are you sure you want to delete # {0}?', $mkReleasenoteFile->id)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

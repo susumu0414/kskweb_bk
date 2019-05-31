@@ -4,14 +4,15 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * MkUpdatelogFile Entity
+ * MkReleasenoteFile Entity
  *
  * @property int $id
- * @property string $release_ymd
- * @property string $version
+ * @property string|null $release_ymd
+ * @property string|null $version
+ * @property string|null $title
  * @property string|null $note
  */
-class MkUpdatelogFile extends Entity
+class MkReleasenoteFile extends Entity
 {
 
     /**
@@ -26,6 +27,7 @@ class MkUpdatelogFile extends Entity
     protected $_accessible = [
         'release_ymd' => true,
         'version' => true,
+        'title' => true,
         'note' => true
     ];
 }
