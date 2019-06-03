@@ -35,7 +35,7 @@ class MkPageFilesController extends AppController
     public function view($id = null)
     {
         $mkPageFile = $this->MkPageFiles->get($id, [
-            'contain' => ['MkAuthFiles']
+            'contain' => ['MkAuthFiles', 'MkMenueFiles']
         ]);
 
         $this->set('mkPageFile', $mkPageFile);

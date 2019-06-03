@@ -10,6 +10,8 @@
         <li><?= $this->Html->link(__('New Mk Page File'), ['action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Mk Auth Files'), ['controller' => 'MkAuthFiles', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Mk Auth File'), ['controller' => 'MkAuthFiles', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Mk Menue Files'), ['controller' => 'MkMenueFiles', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Mk Menue File'), ['controller' => 'MkMenueFiles', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="mkPageFiles index large-9 medium-8 columns content">
@@ -18,8 +20,7 @@
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('menue_kbn') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('page_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('id_page') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('page_nm') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('url') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('file_nm') ?></th>
@@ -32,8 +33,7 @@
             <?php foreach ($mkPageFiles as $mkPageFile): ?>
             <tr>
                 <td><?= $this->Number->format($mkPageFile->id) ?></td>
-                <td><?= h($mkPageFile->menue_kbn) ?></td>
-                <td><?= h($mkPageFile->page_id) ?></td>
+                <td><?= h($mkPageFile->id_page) ?></td>
                 <td><?= h($mkPageFile->page_nm) ?></td>
                 <td><?= h($mkPageFile->url) ?></td>
                 <td><?= h($mkPageFile->file_nm) ?></td>

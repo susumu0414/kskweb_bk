@@ -1,22 +1,22 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\MkPageFilesTable;
+use App\Model\Table\MkMenueKbnFilesTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\MkPageFilesTable Test Case
+ * App\Model\Table\MkMenueKbnFilesTable Test Case
  */
-class MkPageFilesTableTest extends TestCase
+class MkMenueKbnFilesTableTest extends TestCase
 {
 
     /**
      * Test subject
      *
-     * @var \App\Model\Table\MkPageFilesTable
+     * @var \App\Model\Table\MkMenueKbnFilesTable
      */
-    public $MkPageFiles;
+    public $MkMenueKbnFiles;
 
     /**
      * Fixtures
@@ -24,8 +24,7 @@ class MkPageFilesTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.MkPageFiles',
-        'app.MkAuthFiles',
+        'app.MkMenueKbnFiles',
         'app.MkMenueFiles'
     ];
 
@@ -37,8 +36,8 @@ class MkPageFilesTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::getTableLocator()->exists('MkPageFiles') ? [] : ['className' => MkPageFilesTable::class];
-        $this->MkPageFiles = TableRegistry::getTableLocator()->get('MkPageFiles', $config);
+        $config = TableRegistry::getTableLocator()->exists('MkMenueKbnFiles') ? [] : ['className' => MkMenueKbnFilesTable::class];
+        $this->MkMenueKbnFiles = TableRegistry::getTableLocator()->get('MkMenueKbnFiles', $config);
     }
 
     /**
@@ -48,7 +47,7 @@ class MkPageFilesTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->MkPageFiles);
+        unset($this->MkMenueKbnFiles);
 
         parent::tearDown();
     }

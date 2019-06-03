@@ -4,20 +4,15 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * MkPageFile Entity
+ * MkMenueKbnFile Entity
  *
  * @property int $id
- * @property string $id_page
- * @property string|null $page_nm
- * @property string|null $url
- * @property string $file_nm
- * @property int|null $sort
- * @property string|null $del_flg
+ * @property string $menue_kbn
+ * @property string $menue_kbn_nm
  *
- * @property \App\Model\Entity\MkAuthFile[] $mk_auth_files
  * @property \App\Model\Entity\MkMenueFile[] $mk_menue_files
  */
-class MkPageFile extends Entity
+class MkMenueKbnFile extends Entity
 {
 
     /**
@@ -30,13 +25,8 @@ class MkPageFile extends Entity
      * @var array
      */
     protected $_accessible = [
-        'id_page' => true,
-        'page_nm' => true,
-        'url' => true,
-        'file_nm' => true,
-        'sort' => true,
-        'del_flg' => true,
-        'mk_auth_files' => true,
+        'menue_kbn' => true,
+        'menue_kbn_nm' => true,
         'mk_menue_files' => true
     ];
 }

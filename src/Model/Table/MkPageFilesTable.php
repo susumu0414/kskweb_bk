@@ -9,8 +9,8 @@ use Cake\Validation\Validator;
 /**
  * MkPageFiles Model
  *
- * @property |\Cake\ORM\Association\BelongsTo $Pages
  * @property \App\Model\Table\MkAuthFilesTable|\Cake\ORM\Association\HasMany $MkAuthFiles
+ * @property \App\Model\Table\MkMenueFilesTable|\Cake\ORM\Association\HasMany $MkMenueFiles
  *
  * @method \App\Model\Entity\MkPageFile get($primaryKey, $options = [])
  * @method \App\Model\Entity\MkPageFile newEntity($data = null, array $options = [])
@@ -23,9 +23,9 @@ use Cake\Validation\Validator;
  */
 class MkPageFilesTable extends Table
 {
-    public static function defaultConnectionName() {
-            return 'kskweb_db';
-    }
+  public static function defaultConnectionName() {
+          return 'kskweb_db';
+  }
     /**
      * Initialize method
      *
@@ -43,6 +43,9 @@ class MkPageFilesTable extends Table
         $this->hasMany('MkAuthFiles', [
             'foreignKey' => 'mk_page_file_id'
         ]);
+        $this->hasMany('MkMenueFiles', [
+            'foreignKey' => 'mk_page_file_id'
+        ]);
     }
 
     /**
@@ -58,14 +61,14 @@ class MkPageFilesTable extends Table
             ->allowEmptyString('id', 'create');
 
         $validator
-            ->scalar('menue_kbn')
-            ->maxLength('menue_kbn', 15)
-            ->requirePresence('menue_kbn', 'create')
-            ->allowEmptyString('menue_kbn', false);
+            ->scalar('id_page')
+            ->maxLength('id_page', 30)
+            ->requirePresence('id_page', 'create')
+            ->allowEmptyString('id_page', false);
 
         $validator
             ->scalar('page_nm')
-            ->maxLength('page_nm', 40)
+            ->maxLength('page_nm', 50)
             ->allowEmptyString('page_nm');
 
         $validator
@@ -89,17 +92,5 @@ class MkPageFilesTable extends Table
             ->allowEmptyString('del_flg');
 
         return $validator;
-    }
-
-    /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
-     *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
-     */
-    public function buildRules(RulesChecker $rules)
-    {
-        return $rules;
     }
 }

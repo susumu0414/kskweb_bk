@@ -1,11 +1,11 @@
 
 <?php
-  $menue_serv = $this->getRequest()->getSession()->read('SideMenue.serv');
+  $menue_service = $this->getRequest()->getSession()->read('SideMenue.service');
   $menue_ec = $this->getRequest()->getSession()->read('SideMenue.ec');
   $menue_acc = $this->getRequest()->getSession()->read('SideMenue.acc');
-  $menue_pert = $this->getRequest()->getSession()->read('SideMenue.pert');
-  $menue_sys = $this->getRequest()->getSession()->read('SideMenue.sys');
-  $menue_sale = $this->getRequest()->getSession()->read('SideMenue.sale');
+  $menue_parts = $this->getRequest()->getSession()->read('SideMenue.parts');
+  $menue_system = $this->getRequest()->getSession()->read('SideMenue.system');
+  $menue_sales = $this->getRequest()->getSession()->read('SideMenue.sales');
   $menue_logi = $this->getRequest()->getSession()->read('SideMenue.logi');
 ?>
 <div id="side_menue">
@@ -19,8 +19,8 @@
       <p>▼営業</p>
         <ul class="inner">
           <?php
-          if (isset($menue_sale)){
-            foreach ($menue_sale as $row) {
+          if (isset($menue_sales)){
+            foreach ($menue_sales as $row) {
               echo '<li>';
               echo $this->Html->link($row['mk_page_file']['page_nm'],$row['mk_page_file']['url'],array('escape' => false));
               echo '</li>';
@@ -33,8 +33,8 @@
 			<p>▼パーツ</p>
 	      <ul class="inner">
           <?php
-            if (isset($menue_pert)){
-              foreach ($menue_pert as $row) {
+            if (isset($menue_parts)){
+              foreach ($menue_parts as $row) {
                 echo '<li>';
                 echo $this->Html->link($row['mk_page_file']['page_nm'],$row['mk_page_file']['url'],array('escape' => false));
                 echo '</li>';
@@ -47,8 +47,8 @@
 			<p>▼サービス</p>
 	      <ul class="inner">
           <?php
-            if (isset($menue_serv)){
-              foreach ($menue_serv as $row) {
+            if (isset($menue_service)){
+              foreach ($menue_service as $row) {
                 echo '<li>';
                 echo $this->Html->link($row['mk_page_file']['page_nm'],$row['mk_page_file']['url'],array('escape' => false));
                 echo '</li>';
@@ -103,8 +103,8 @@
 			<p>▼情シス</p>
 	      <ul class="inner">
           <?php
-            if (isset($menue_sys)){
-              foreach ($menue_sys as $row) {
+            if (isset($menue_system)){
+              foreach ($menue_system as $row) {
                 echo '<li>';
                 echo $this->Html->link($row['mk_page_file']['page_nm'],$row['mk_page_file']['url'],array('escape' => false));
                 echo '</li>';

@@ -1,14 +1,14 @@
 <?php
 namespace App\Test\TestCase\Controller;
 
-use App\Controller\MkPageFilesController;
+use App\Controller\MkMenueFilesController;
 use Cake\TestSuite\IntegrationTestTrait;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Controller\MkPageFilesController Test Case
+ * App\Controller\MkMenueFilesController Test Case
  */
-class MkPageFilesControllerTest extends TestCase
+class MkMenueFilesControllerTest extends TestCase
 {
     use IntegrationTestTrait;
 
@@ -18,9 +18,8 @@ class MkPageFilesControllerTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.MkPageFiles',
-        'app.MkAuthFiles',
-        'app.MkMenueFiles'
+        'app.MkMenueFiles',
+        'app.MkPageFiles'
     ];
 
     /**

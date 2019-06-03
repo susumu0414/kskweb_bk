@@ -10,6 +10,10 @@ class LoginController extends AppController
     // テーブルモデル呼び出し
     $this->loadModel('MTanto');
     $this->loadModel('MkAuthFiles');
+    $this->loadModel('MkPageFiles');
+    $this->loadModel('MkMenueFiles');
+    $this->loadModel('MkMenueKbnFiles');
+
   }
 
   public function index()
@@ -55,67 +59,29 @@ class LoginController extends AppController
 
     // 権限マスタからメニュー情報取得
     $mkAuthFile =[];
-    $mkAuthFile = $this->MkAuthFiles->find()->contain(['MkPageFiles'])
-      ->where(["auth_kbn" =>$auth_kbn])
-      ->andwhere(["MkPageFiles.menue_kbn" =>"serv"])
-      ->andwhere(["MkPageFiles.del_flg" =>"0"])
-      ->order(["MkPageFiles.menue_kbn","MkPageFiles.sort"])
+    // $mkAuthFile = $this->MkAuthFiles->find()->contain(['MkPageFiles','MkMenueFiles','MkMenueKbnFiles'])
+    //   ->where(["auth_kbn" =>$auth_kbn])
+    //   ->andwhere(["MkMenueKbnFiles.menue_kbn" =>"service"])
+    //   ->andwhere(["MkPageFiles.del_flg" =>"0"])
+    //   ->order(["MkPageFiles.sort"])
+    //   ->toArray();
+    $query = $this->MkMenueKbnFiles->find()
+      ->join(['m'=>['table' => 'mk_menue_files','type'=>'left','conditions'=>'m.mk_menue_kbn_file_id = MkMenueKbnFiles.id']])
+      ->join(['p'=>['table' => 'mk_page_files','type'=>'left','conditions'=>'p.id = m.mk_page_file_id']])
+      ->join(['a'=>['table' => 'mk_auth_files','type'=>'left','conditions'=>'a.mk_page_file_id = p.id']])
+      ->where(['a.auth_kbn' =>$auth_kbn])
+      ->andwhere(['MkMenueKbnFiles.menue_kbn'=>"system"])
+      ->andwhere(["p.del_flg !=" =>"1"])
+      ->order(["p.sort"])
+      ->select ([
+        'id_page'=>'p.id_page',
+        'page_nm'=>'p.page_nm',
+        'url'=>'p.url',
+        'file_nm'=>'p.file_nm',
+      ])
       ->toArray();
-    $session->write('SideMenue.serv', $mkAuthFile);
+    $this->log("クエリーあa".$query[0], LOG_DEBUG);
 
-    $mkAuthFile =[];
-    $mkAuthFile = $this->MkAuthFiles->find()->contain(['MkPageFiles'])
-      ->where(["auth_kbn" =>$auth_kbn])
-      ->andwhere(["MkPageFiles.menue_kbn" =>"ec"])
-      ->andwhere(["MkPageFiles.del_flg" =>"0"])
-      ->order(["MkPageFiles.menue_kbn","MkPageFiles.sort"])
-      ->toArray();
-    $session->write('SideMenue.ec', $mkAuthFile);
-
-    $mkAuthFile =[];
-    $mkAuthFile = $this->MkAuthFiles->find()->contain(['MkPageFiles'])
-      ->where(["auth_kbn" =>$auth_kbn])
-      ->andwhere(["MkPageFiles.menue_kbn" =>"acc"])
-      ->andwhere(["MkPageFiles.del_flg" =>"0"])
-      ->order(["MkPageFiles.menue_kbn","MkPageFiles.sort"])
-      ->toArray();
-    $session->write('SideMenue.acc', $mkAuthFile);
-
-    $mkAuthFile =[];
-    $mkAuthFile = $this->MkAuthFiles->find()->contain(['MkPageFiles'])
-      ->where(["auth_kbn" =>$auth_kbn])
-      ->andwhere(["MkPageFiles.menue_kbn" =>"sys"])
-      ->andwhere(["MkPageFiles.del_flg" =>"0"])
-      ->order(["MkPageFiles.menue_kbn","MkPageFiles.sort"])
-      ->toArray();
-    $session->write('SideMenue.sys', $mkAuthFile);
-
-    $mkAuthFile =[];
-    $mkAuthFile = $this->MkAuthFiles->find()->contain(['MkPageFiles'])
-      ->where(["auth_kbn" =>$auth_kbn])
-      ->andwhere(["MkPageFiles.menue_kbn" =>"pert"])
-      ->andwhere(["MkPageFiles.del_flg" =>"0"])
-      ->order(["MkPageFiles.menue_kbn","MkPageFiles.sort"])
-      ->toArray();
-    $session->write('SideMenue.pert', $mkAuthFile);
-
-    $mkAuthFile =[];
-    $mkAuthFile = $this->MkAuthFiles->find()->contain(['MkPageFiles'])
-      ->where(["auth_kbn" =>$auth_kbn])
-      ->andwhere(["MkPageFiles.menue_kbn" =>"sale"])
-      ->andwhere(["MkPageFiles.del_flg" =>"0"])
-      ->order(["MkPageFiles.menue_kbn","MkPageFiles.sort"])
-      ->toArray();
-    $session->write('SideMenue.sale', $mkAuthFile);
-
-    $mkAuthFile =[];
-    $mkAuthFile = $this->MkAuthFiles->find()->contain(['MkPageFiles'])
-      ->where(["auth_kbn" =>$auth_kbn])
-      ->andwhere(["MkPageFiles.menue_kbn" =>"logi"])
-      ->andwhere(["MkPageFiles.del_flg" =>"0"])
-      ->order(["MkPageFiles.menue_kbn","MkPageFiles.sort"])
-      ->toArray();
-    $session->write('SideMenue.logi', $mkAuthFile);
-
+    $session->write('SideMenue.system', $query);
   }
 }
