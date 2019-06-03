@@ -60,7 +60,8 @@ class MkMenueKbnFilesTable extends Table
             ->scalar('menue_kbn')
             ->maxLength('menue_kbn', 20)
             ->requirePresence('menue_kbn', 'create')
-            ->allowEmptyString('menue_kbn', false);
+            ->allowEmptyString('menue_kbn', false)
+            ->add('menue_kbn', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
         $validator
             ->scalar('menue_kbn_nm')
@@ -69,5 +70,19 @@ class MkMenueKbnFilesTable extends Table
             ->allowEmptyString('menue_kbn_nm', false);
 
         return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules)
+    {
+        $rules->add($rules->isUnique(['menue_kbn']));
+
+        return $rules;
     }
 }

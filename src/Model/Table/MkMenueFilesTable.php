@@ -9,7 +9,7 @@ use Cake\Validation\Validator;
 /**
  * MkMenueFiles Model
  *
- * @property |\Cake\ORM\Association\BelongsTo $MkMenueKbnFiles
+ * @property \App\Model\Table\MkMenueKbnFilesTable|\Cake\ORM\Association\BelongsTo $MkMenueKbnFiles
  * @property \App\Model\Table\MkPageFilesTable|\Cake\ORM\Association\BelongsTo $MkPageFiles
  *
  * @method \App\Model\Entity\MkMenueFile get($primaryKey, $options = [])

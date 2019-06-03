@@ -53,6 +53,16 @@ class MkMenueKbnFilesTableTest extends TestCase
     }
 
     /**
+     * Test defaultConnectionName method
+     *
+     * @return void
+     */
+    public function testDefaultConnectionName()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
      * Test initialize method
      *
      * @return void

@@ -26,6 +26,7 @@ class MkPageFilesFixture extends TestFixture
         'del_flg' => ['type' => 'string', 'length' => 1, 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
+            'id_page' => ['type' => 'unique', 'columns' => ['id_page'], 'length' => []],
         ],
         '_options' => [
             'engine' => 'InnoDB',

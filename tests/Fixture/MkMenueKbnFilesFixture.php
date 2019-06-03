@@ -22,6 +22,7 @@ class MkMenueKbnFilesFixture extends TestFixture
         'menue_kbn_nm' => ['type' => 'string', 'length' => 30, 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
+            'menue_kbn' => ['type' => 'unique', 'columns' => ['menue_kbn'], 'length' => []],
         ],
         '_options' => [
             'engine' => 'InnoDB',

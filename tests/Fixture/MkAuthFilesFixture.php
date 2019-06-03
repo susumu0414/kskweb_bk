@@ -22,6 +22,7 @@ class MkAuthFilesFixture extends TestFixture
         'mk_page_file_id' => ['type' => 'integer', 'length' => 10, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
+            'auth_kbn' => ['type' => 'unique', 'columns' => ['auth_kbn', 'mk_page_file_id'], 'length' => []],
         ],
         '_options' => [
             'engine' => 'InnoDB',

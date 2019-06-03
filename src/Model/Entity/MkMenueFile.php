@@ -10,6 +10,7 @@ use Cake\ORM\Entity;
  * @property int $mk_menue_kbn_file_id
  * @property int $mk_page_file_id
  *
+ * @property \App\Model\Entity\MkMenueKbnFile $mk_menue_kbn_file
  * @property \App\Model\Entity\MkPageFile $mk_page_file
  */
 class MkMenueFile extends Entity
@@ -27,6 +28,7 @@ class MkMenueFile extends Entity
     protected $_accessible = [
         'mk_menue_kbn_file_id' => true,
         'mk_page_file_id' => true,
+        'mk_menue_kbn_file' => true,
         'mk_page_file' => true
     ];
 }

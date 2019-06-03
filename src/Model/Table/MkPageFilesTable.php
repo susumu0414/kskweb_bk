@@ -64,7 +64,8 @@ class MkPageFilesTable extends Table
             ->scalar('id_page')
             ->maxLength('id_page', 30)
             ->requirePresence('id_page', 'create')
-            ->allowEmptyString('id_page', false);
+            ->allowEmptyString('id_page', false)
+            ->add('id_page', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
         $validator
             ->scalar('page_nm')
@@ -92,5 +93,19 @@ class MkPageFilesTable extends Table
             ->allowEmptyString('del_flg');
 
         return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules)
+    {
+        $rules->add($rules->isUnique(['id_page']));
+
+        return $rules;
     }
 }

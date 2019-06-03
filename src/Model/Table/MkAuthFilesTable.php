@@ -22,9 +22,9 @@ use Cake\Validation\Validator;
  */
 class MkAuthFilesTable extends Table
 {
-    public static function defaultConnectionName() {
-            return 'kskweb_db';
-    }
+  public static function defaultConnectionName() {
+          return 'kskweb_db';
+  }
     /**
      * Initialize method
      *

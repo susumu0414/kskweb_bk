@@ -22,6 +22,7 @@ class MkMenueFilesFixture extends TestFixture
         'mk_page_file_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
+            'mk_menue_kbn_file_id' => ['type' => 'unique', 'columns' => ['mk_menue_kbn_file_id', 'mk_page_file_id'], 'length' => []],
         ],
         '_options' => [
             'engine' => 'InnoDB',

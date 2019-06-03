@@ -25,6 +25,7 @@ class MkMenueFilesTableTest extends TestCase
      */
     public $fixtures = [
         'app.MkMenueFiles',
+        'app.MkMenueKbnFiles',
         'app.MkPageFiles'
     ];
 
