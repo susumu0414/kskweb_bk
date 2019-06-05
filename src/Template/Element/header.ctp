@@ -5,7 +5,7 @@
     </div>
     <div class="header_flxitem2">
       <p>ユーザー名： <?php echo $this->getRequest()->getSession()->read('MTanto.tan_nm'); ?> </p>
-      <?php echo $this->Html->link('ログオフ','http://google.com/',array()); ?>
+      <?php echo $this->Html->link('ログオフ',"/login",array('escape' => false)); ?>
     </div>
   </div>
 </header>

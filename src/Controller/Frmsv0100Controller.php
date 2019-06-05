@@ -29,7 +29,7 @@ class Frmsv0100Controller extends AppController
     if ($ret==false){
       $this->log("権限なし", LOG_DEBUG);
 
-      $this->request->session()->destroy();
+      // $this->request->session()->destroy();
       $this->Flash->set('権限が無い、もしくはセッションが切れました。ログインしなおしてください。'); //メッセージをセット
       // トップ画面に遷移
       return $this->redirect(['controller' => 'Login', 'action' => 'index']);
@@ -97,13 +97,14 @@ class Frmsv0100Controller extends AppController
     $strSQL = $strSQL . "    ON MJH.hin_cd = MS.hin_cd ";
     $strSQL = $strSQL . "WHERE";
     $strSQL = $strSQL . "  1 = 1";
-    $strSQL = $strSQL . "  AND TJ.jyucyu_no = '". $objParam['jyucyu_no'] . "' ";
+    $strSQL = $strSQL . "  AND TJ.jyucyu_no = ". $objParam['jyucyu_no'] . " ";
     // ロケーションの先頭2ケタが数字のもの
     $strSQL = $strSQL . "  AND MJH.location_no ~ '^[0-9][0-9]' ";
     $strSQL = $strSQL . "ORDER BY";
     $strSQL = $strSQL . "  MJH.location_no,";
     $strSQL = $strSQL . "  TJM.row_no";
 
+    $this->log("検索クエリ".$strSQL, LOG_DEBUG);
     return $strSQL;
   }
 

@@ -14,6 +14,8 @@ class LoginController extends AppController
     $this->loadModel('MkMenueFiles');
     $this->loadModel('MkMenueKbnFiles');
 
+    // sessionの初期化
+    $this->request->session()->destroy();
   }
 
   public function index()
@@ -57,14 +59,79 @@ class LoginController extends AppController
     // セッションオブジェクトの取得
     $session = $this->request->session();
 
-    // 権限マスタからメニュー情報取得
-    $mkAuthFile =[];
-    // $mkAuthFile = $this->MkAuthFiles->find()->contain(['MkPageFiles','MkMenueFiles','MkMenueKbnFiles'])
-    //   ->where(["auth_kbn" =>$auth_kbn])
-    //   ->andwhere(["MkMenueKbnFiles.menue_kbn" =>"service"])
-    //   ->andwhere(["MkPageFiles.del_flg" =>"0"])
-    //   ->order(["MkPageFiles.sort"])
-    //   ->toArray();
+    // マスタからメニュー情報取得(ここは改良の余地あり)
+    $query = $this->MkMenueKbnFiles->find()
+      ->join(['m'=>['table' => 'mk_menue_files','type'=>'left','conditions'=>'m.mk_menue_kbn_file_id = MkMenueKbnFiles.id']])
+      ->join(['p'=>['table' => 'mk_page_files','type'=>'left','conditions'=>'p.id = m.mk_page_file_id']])
+      ->join(['a'=>['table' => 'mk_auth_files','type'=>'left','conditions'=>'a.mk_page_file_id = p.id']])
+      ->where(['a.auth_kbn' =>$auth_kbn])
+      ->andwhere(['MkMenueKbnFiles.menue_kbn'=>"service"])
+      ->andwhere(["p.del_flg !=" =>"1"])
+      ->order(["p.sort"])
+      ->select ([
+        'id_page'=>'p.id_page',
+        'page_nm'=>'p.page_nm',
+        'url'=>'p.url',
+        'file_nm'=>'p.file_nm',
+      ])
+      ->toArray();
+
+    $session->write('SideMenue.service', $query);
+
+    $query = $this->MkMenueKbnFiles->find()
+      ->join(['m'=>['table' => 'mk_menue_files','type'=>'left','conditions'=>'m.mk_menue_kbn_file_id = MkMenueKbnFiles.id']])
+      ->join(['p'=>['table' => 'mk_page_files','type'=>'left','conditions'=>'p.id = m.mk_page_file_id']])
+      ->join(['a'=>['table' => 'mk_auth_files','type'=>'left','conditions'=>'a.mk_page_file_id = p.id']])
+      ->where(['a.auth_kbn' =>$auth_kbn])
+      ->andwhere(['MkMenueKbnFiles.menue_kbn'=>"ec"])
+      ->andwhere(["p.del_flg !=" =>"1"])
+      ->order(["p.sort"])
+      ->select ([
+        'id_page'=>'p.id_page',
+        'page_nm'=>'p.page_nm',
+        'url'=>'p.url',
+        'file_nm'=>'p.file_nm',
+      ])
+      ->toArray();
+
+    $session->write('SideMenue.ec', $query);
+
+    $query = $this->MkMenueKbnFiles->find()
+      ->join(['m'=>['table' => 'mk_menue_files','type'=>'left','conditions'=>'m.mk_menue_kbn_file_id = MkMenueKbnFiles.id']])
+      ->join(['p'=>['table' => 'mk_page_files','type'=>'left','conditions'=>'p.id = m.mk_page_file_id']])
+      ->join(['a'=>['table' => 'mk_auth_files','type'=>'left','conditions'=>'a.mk_page_file_id = p.id']])
+      ->where(['a.auth_kbn' =>$auth_kbn])
+      ->andwhere(['MkMenueKbnFiles.menue_kbn'=>"acc"])
+      ->andwhere(["p.del_flg !=" =>"1"])
+      ->order(["p.sort"])
+      ->select ([
+        'id_page'=>'p.id_page',
+        'page_nm'=>'p.page_nm',
+        'url'=>'p.url',
+        'file_nm'=>'p.file_nm',
+      ])
+      ->toArray();
+
+    $session->write('SideMenue.acc', $query);
+
+    $query = $this->MkMenueKbnFiles->find()
+      ->join(['m'=>['table' => 'mk_menue_files','type'=>'left','conditions'=>'m.mk_menue_kbn_file_id = MkMenueKbnFiles.id']])
+      ->join(['p'=>['table' => 'mk_page_files','type'=>'left','conditions'=>'p.id = m.mk_page_file_id']])
+      ->join(['a'=>['table' => 'mk_auth_files','type'=>'left','conditions'=>'a.mk_page_file_id = p.id']])
+      ->where(['a.auth_kbn' =>$auth_kbn])
+      ->andwhere(['MkMenueKbnFiles.menue_kbn'=>"parts"])
+      ->andwhere(["p.del_flg !=" =>"1"])
+      ->order(["p.sort"])
+      ->select ([
+        'id_page'=>'p.id_page',
+        'page_nm'=>'p.page_nm',
+        'url'=>'p.url',
+        'file_nm'=>'p.file_nm',
+      ])
+      ->toArray();
+
+    $session->write('SideMenue.parts', $query);
+
     $query = $this->MkMenueKbnFiles->find()
       ->join(['m'=>['table' => 'mk_menue_files','type'=>'left','conditions'=>'m.mk_menue_kbn_file_id = MkMenueKbnFiles.id']])
       ->join(['p'=>['table' => 'mk_page_files','type'=>'left','conditions'=>'p.id = m.mk_page_file_id']])
@@ -80,8 +147,44 @@ class LoginController extends AppController
         'file_nm'=>'p.file_nm',
       ])
       ->toArray();
-    $this->log("クエリーあa".$query[0], LOG_DEBUG);
 
     $session->write('SideMenue.system', $query);
+
+    $query = $this->MkMenueKbnFiles->find()
+      ->join(['m'=>['table' => 'mk_menue_files','type'=>'left','conditions'=>'m.mk_menue_kbn_file_id = MkMenueKbnFiles.id']])
+      ->join(['p'=>['table' => 'mk_page_files','type'=>'left','conditions'=>'p.id = m.mk_page_file_id']])
+      ->join(['a'=>['table' => 'mk_auth_files','type'=>'left','conditions'=>'a.mk_page_file_id = p.id']])
+      ->where(['a.auth_kbn' =>$auth_kbn])
+      ->andwhere(['MkMenueKbnFiles.menue_kbn'=>"sales"])
+      ->andwhere(["p.del_flg !=" =>"1"])
+      ->order(["p.sort"])
+      ->select ([
+        'id_page'=>'p.id_page',
+        'page_nm'=>'p.page_nm',
+        'url'=>'p.url',
+        'file_nm'=>'p.file_nm',
+      ])
+      ->toArray();
+
+    $session->write('SideMenue.sales', $query);
+
+    $query = $this->MkMenueKbnFiles->find()
+      ->join(['m'=>['table' => 'mk_menue_files','type'=>'left','conditions'=>'m.mk_menue_kbn_file_id = MkMenueKbnFiles.id']])
+      ->join(['p'=>['table' => 'mk_page_files','type'=>'left','conditions'=>'p.id = m.mk_page_file_id']])
+      ->join(['a'=>['table' => 'mk_auth_files','type'=>'left','conditions'=>'a.mk_page_file_id = p.id']])
+      ->where(['a.auth_kbn' =>$auth_kbn])
+      ->andwhere(['MkMenueKbnFiles.menue_kbn'=>"logi"])
+      ->andwhere(["p.del_flg !=" =>"1"])
+      ->order(["p.sort"])
+      ->select ([
+        'id_page'=>'p.id_page',
+        'page_nm'=>'p.page_nm',
+        'url'=>'p.url',
+        'file_nm'=>'p.file_nm',
+      ])
+      ->toArray();
+
+    $session->write('SideMenue.logi', $query);
+
   }
 }

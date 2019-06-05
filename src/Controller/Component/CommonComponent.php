@@ -37,7 +37,7 @@ class CommonComponent extends Component
       $mkAuthFiles = $this->MkAuthFiles->find()->contain(['MkPageFiles'])
         ->where(["auth_kbn" =>$auth_kbn])
         ->andwhere(["MkPageFiles.file_nm" =>$file_name])
-        ->andwhere(["MkPageFiles.del_flg" =>"0"])
+        ->andwhere(["MkPageFiles.del_flg !=" =>"1"])
         ->toArray();
       if (isset($mkAuthFiles)) {
         $result=$mkAuthFiles;

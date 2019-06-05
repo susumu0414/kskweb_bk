@@ -1,7 +1,7 @@
 $(document).ready(function(){
   $("#btn_search").click(function(){
     // 処理前に Loading 画像を表示
-    // dispLoading("処理中...");
+    dispLoading("処理中...");
 
     // 操作対象のフォーム要素を取得
     form_input.btn_nm.value='btn_search';   //押したボタン識別用にボタン名をセット
@@ -33,12 +33,6 @@ $(document).ready(function(){
     });
     return false;
   });
-  // $('#tbl_result tbody').on("click", "tr", function() {
-  //   if ($(this).find('.dataTables_empty').length == 0) {
-  //       var data = $('#tbl_result').dataTable().fnGetData(this);
-  //       console.log(data);
-  //   }
-  // });
 
   $('#tbl_result tbody').on('click',"tr", function(e) {
     var that = this;
@@ -120,23 +114,6 @@ function Fnc_DataTables_Set($response){
     },
   });
 };
-
-
-function Fnc_Escape_Html (string) {
-  if(typeof string !== 'string') {
-    return string;
-  }
-  return string.replace(/[&'`"<>]/g, function(match) {
-    return {
-      '&': '&amp;',
-      "'": '&#x27;',
-      '`': '&#x60;',
-      '"': '&quot;',
-      '<': '&lt;',
-      '>': '&gt;',
-    }[match]
-  });
-}
 
 // ------------------------------
 // Loading イメージ表示関数

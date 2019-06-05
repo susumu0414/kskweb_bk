@@ -1,4 +1,3 @@
-
 <?php
   $menue_service = $this->getRequest()->getSession()->read('SideMenue.service');
   $menue_ec = $this->getRequest()->getSession()->read('SideMenue.ec');
@@ -12,7 +11,7 @@
 	<ul class="accordion_menue">
   	<li>
 			<p>
-				<a href="">TOP</a>
+        <?php echo $this->Html->link('TOP',"/top",array('escape' => false)); ?>
 			</p>
 		</li>
     <li>
@@ -22,7 +21,7 @@
           if (isset($menue_sales)){
             foreach ($menue_sales as $row) {
               echo '<li>';
-              echo $this->Html->link($row['mk_page_file']['page_nm'],$row['mk_page_file']['url'],array('escape' => false));
+              echo $this->Html->link($row['page_nm'],$row['url'],array('escape' => false));
               echo '</li>';
             }
           }
@@ -36,7 +35,7 @@
             if (isset($menue_parts)){
               foreach ($menue_parts as $row) {
                 echo '<li>';
-                echo $this->Html->link($row['mk_page_file']['page_nm'],$row['mk_page_file']['url'],array('escape' => false));
+                echo $this->Html->link($row['page_nm'],$row['url'],array('escape' => false));
                 echo '</li>';
               }
             }
@@ -50,7 +49,7 @@
             if (isset($menue_service)){
               foreach ($menue_service as $row) {
                 echo '<li>';
-                echo $this->Html->link($row['mk_page_file']['page_nm'],$row['mk_page_file']['url'],array('escape' => false));
+                echo $this->Html->link($row['page_nm'],$row['url'],array('escape' => false));
                 echo '</li>';
               }
             }
@@ -64,7 +63,7 @@
             if (isset($menue_ec)){
               foreach ($menue_ec as $row) {
                 echo '<li>';
-                echo $this->Html->link($row['mk_page_file']['page_nm'],$row['mk_page_file']['url'],array('escape' => false));
+                echo $this->Html->link($row['page_nm'],$row['url'],array('escape' => false));
                 echo '</li>';
               }
             }
@@ -78,7 +77,7 @@
             if (isset($menue_logi)){
               foreach ($menue_logi as $row) {
                 echo '<li>';
-                echo $this->Html->link($row['mk_page_file']['page_nm'],$row['mk_page_file']['url'],array('escape' => false));
+                echo $this->Html->link($row['page_nm'],$row['url'],array('escape' => false));
                 echo '</li>';
               }
             }
@@ -92,7 +91,7 @@
             if (isset($menue_acc)){
               foreach ($menue_acc as $row) {
                 echo '<li>';
-                echo $this->Html->link($row['mk_page_file']['page_nm'],$row['mk_page_file']['url'],array('escape' => false));
+                echo $this->Html->link($row['page_nm'],$row['url'],array('escape' => false));
                 echo '</li>';
               }
             }
@@ -106,7 +105,7 @@
             if (isset($menue_system)){
               foreach ($menue_system as $row) {
                 echo '<li>';
-                echo $this->Html->link($row['mk_page_file']['page_nm'],$row['mk_page_file']['url'],array('escape' => false));
+                echo $this->Html->link($row['page_nm'],$row['url'],array('escape' => false));
                 echo '</li>';
               }
             }
