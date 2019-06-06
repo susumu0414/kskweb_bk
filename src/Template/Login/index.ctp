@@ -5,10 +5,12 @@
     <title>キサカWEB</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Frank+Ruhl+Libre">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <?= $this->Html->css('kisaka_login.css') ?>
-    <?= $this->fetch('css') ?>
     <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <?= $this->Html->css('kisaka_login.css') ?>
     <?= $this->Html->script('Login',['block' => true]) ?>
+
+    <?= $this->fetch('css') ?>
+    <?= $this->fetch('script') ?>
   </head>
 
   <body>
@@ -24,7 +26,8 @@
         <?=$this->Form->create(null,['type' => 'post',
                         'url' => ['controller' => 'Login', 'action' => 'index'],
                         'class' =>'animated fadeInLeftBig  logo-animation2',
-                        'id' =>'form_input'])?>
+                        'id' =>'form_input',
+                        'name' => 'form_input'])?>
           <?=$this->Form->input('tan_cd',array('type'=>'text','label' => 'ログインID：','maxlength'=>15)) ?>
           <?=$this->Form->input('user_pass',array('type'=>'password','label' => 'パスワード：','maxlength'=>15)) ?>
 
