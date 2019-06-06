@@ -14,6 +14,9 @@ class LoginController extends AppController
     $this->loadModel('MkMenueFiles');
     $this->loadModel('MkMenueKbnFiles');
 
+    // レイアウトの設定
+    $this->viewBuilder()->layout(false);
+
     // sessionの初期化
     $this->request->session()->destroy();
   }

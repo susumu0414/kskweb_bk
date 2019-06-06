@@ -40,6 +40,10 @@ class Frmsv0100Controller extends AppController
     }
     // 印刷ボタン押下時処理
     if (isset($this->request->data['btn_nm'])=="btn_print"){
+      if(empty($this->request->data['jyucyu_no'])){
+        $this->Flash->set('受注番号を入力してください。'); //メッセージをセット
+        return;
+      }
       // $this->autoRender = FALSE;
       $connection = ConnectionManager::get('kskdb');
       // クエリー生成(メソッド呼び出しはメソッド名の前に$this->が必要)

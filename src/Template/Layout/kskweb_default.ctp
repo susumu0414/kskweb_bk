@@ -54,7 +54,8 @@
   <body>
     <!-- ヘッダーをElementファイルから読み込む -->
     <?= $this->element('header') ?>
-
+    <!-- Flashメッセージを表示 -->
+    <?= $this->Flash->render() ?>
     <div class="main_flxcont">
       <div class="main_flxitem1">
         <!-- サイドバーをElementファイルから読み込む -->

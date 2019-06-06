@@ -1,0 +1,92 @@
+@charset "UTF-8";
+
+
+#bg-video{
+ position: fixed;
+ right: 0;
+ bottom: 0;
+ min-width: 100%;
+ min-height: 100%;
+ width: auto;
+ height: auto;
+ z-index: -100;
+ /* background: url('poster.jpg') no-repeat; */
+ background-size: cover;
+}
+
+/* ----- グラデーションオーバーレイ ----- */
+
+#main_login{
+  margin: 180px auto;
+  width: 100%;
+  height: 320px;
+  /* height: 300px; */
+  /* display: none; */
+  /* height: 100vh; */
+  background-color: rgba(0, 0, 0,0.9);
+
+}
+#contents_login{
+  position: absolute;
+  top: 300px;
+  right: 0px;
+  bottom: 0px;
+  left: 400px;
+  /* margin: 250px; */
+  width: 100%;
+  height: 200px;
+  color: #f9fcfb;
+}
+
+/* #contents_login{
+  width: 100%;
+  height: 200px;
+  color: #f9fcfb;
+} */
+
+#web_title{
+  position: absolute;
+  top: 200px;
+  right: 0px;
+  bottom: 0px;
+  left: 300px;
+}
+
+/* #web_title{
+  margin: 200px auto;
+  width: 600px;
+} */
+
+
+#web_title span{
+  font-size: 60px;
+  font-weight:100;
+  color: #ffffff;
+}
+
+/* ↓↓↓↓animate.css用↓↓↓↓ */
+.logo-animation1{
+  animation-delay:1s;
+}
+.logo-animation2{
+  animation-delay:2s;
+}
+/* ↑↑↑↑animate.css用↑↑↑↑ */
+
+/* ↓↓↓↓ボタンデザイン↓↓↓↓ */
+.square_btn {
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: #ff96f1;
+    background: #454545;
+    border-radius: 0 15px 15px 0;
+    transition: .4s;
+  }
+
+.square_btn:hover {
+    background: #8b8888;
+}
+/* ↑↑↑↑ボタンデザイン↑↑↑↑ */
