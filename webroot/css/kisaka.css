@@ -35,22 +35,21 @@ header {
 .main_flxitem1{
 	width: 15%;
 	/* width: 100px; */
-	border: 2px solid #cbcbcb;
+	border-left: 2px solid #cbcbcb;
+	border-right: 2px solid #cbcbcb;
 }
 .main_flxitem2{
 	width: 85%;
+	border-right: 2px solid #cbcbcb;
 }
 
 #wrapper {
   width : 100% ;
-  /* border: 2px solid #cbcbcb; */
-  /* margin: 5px auto; */
 }
 
 #main {
   font-size: 14px;
   min-height: 650px;
-  /* border: 2px solid #cbcbcb; */
 }
 
 #main h3 {
@@ -62,7 +61,7 @@ header {
   width: 100%;
   overflow: hidden;
   background-color:#ebebeb;
-  border: 2px solid #cbcbcb;
+	border-bottom: 2px solid #cbcbcb;
 }
 
 #page_title h2 {
@@ -78,23 +77,21 @@ header {
   width: 100%;
   overflow: hidden;
   background-color:#ebebeb;
-  border: 2px solid #cbcbcb;
+  border-bottom: 2px solid #cbcbcb;
 }
 
 #contents_result{
   width: 100%;
   overflow: hidden;
   background-color: #ffffff;
-  border: 2px solid #cbcbcb;
-  /* visibility:hidden; */
+	border-bottom: 2px solid #cbcbcb;
 }
 
-#contents_top{
+#contents_rireki{
   width: 100%;
   overflow: hidden;
   background-color: #ffffff;
-  border: 2px solid #cbcbcb;
-  /* visibility:hidden; */
+  border-bottom: 2px solid #cbcbcb;
 }
 
 .input_search{
@@ -229,7 +226,6 @@ footer {
   clear: both;
   height: 100px;
   width : 100% ;
-  border: 2px solid #cbcbcb;
   background-color: #28385E;
   color: #ffffff;
 }
