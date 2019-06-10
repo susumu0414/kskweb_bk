@@ -94,6 +94,35 @@ header {
   border-bottom: 2px solid #cbcbcb;
 }
 
+#tbl_rireki th{
+	padding-left: 5px;
+	padding-right: 5px;
+	background-color: #516C9D;
+	color: #ffffff;
+}
+
+#tbl_rireki td{
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+#info_label{
+  width: 100%;
+  /* overflow: hidden; */
+  background-color:#516c9d;
+  border: 2px solid #cbcbcb;
+  color: #ffffff;
+}
+
+#info_data{
+  width: 100%;
+  /* overflow: hidden; */
+  background-color:#ffffff;
+  border: 1px solid #cbcbcb;
+  color: #000000;
+}
+
+
 .input_search{
 	margin-left: 10px;
 }
@@ -220,7 +249,29 @@ header {
 }
 /* ↑↑↑↑ローディング画面↑↑↑↑ */
 
-
+/* ↓↓↓↓スクロールバーのデザイン↓↓↓↓ */
+.scrollArea{
+	height: 150px;
+	width: 100%;
+	overflow: auto;
+	/* padding-right: 20px; */
+	margin-left: 10px;
+}
+/*スクロールバーの横幅指定*/
+.scrollArea.deco::-webkit-scrollbar {
+    width: 15px;
+}
+/*スクロールバーの背景色・角丸指定*/
+.scrollArea.deco::-webkit-scrollbar-track {
+  border-radius: 10px;
+	background: #f2f2f2;
+}
+/*スクロールバーの色・角丸指定*/
+.scrollArea.deco::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+	background:#516C9D;
+}
+/* ↑↑↑↑スクロールバーのデザイン↑↑↑↑ */
 
 footer {
   clear: both;
