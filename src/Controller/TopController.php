@@ -19,7 +19,7 @@ class TopController extends AppController
   public function index() {
     // 更新履歴情報取得
     $MkReleasenoteFiles = $this->MkReleasenoteFiles->find('all');
-    $this->log($MkReleasenoteFiles, LOG_DEBUG);
+    // $this->log($MkReleasenoteFiles, LOG_DEBUG);
     $this->set('mk_updatelog_files',$MkReleasenoteFiles);
   }
 }
