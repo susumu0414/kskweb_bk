@@ -7,7 +7,7 @@
       <marquee loop="3"><?= $mk_news_files[0]['message'] ?></marquee>
     </div>
     <div id="contents_rireki">
-        <h3>更新履歴</h3>
+        <h3><更新履歴></h3>
       <div class="scrollArea deco">
         <table id="tbl_rireki">
           <tr>
