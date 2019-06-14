@@ -1,5 +1,5 @@
 <!-- レイアウトファイルでページごとのjsファイルを読み込む -->
-<?= $this->Html->script('Frmsv0100',['block' => true]) ?>
+<?= $this->Html->script('Frmsv0110',['block' => true]) ?>
 <div id="wrapper">
   <div id="main">
     <div id="page_title">
@@ -9,11 +9,11 @@
       <h3>検索条件入力</h3>
       <?=$this->Form->create(null,[
           'type' => 'post',
-          'url' => ['controller' => 'Frmsv0100', 'action' => 'index'],
+          'url' => ['controller' => 'Frmsv0110', 'action' => 'index'],
           'name' => 'form_input','id' => 'form_input'
         ]
       ) ?>
-        <div class="margin_left_10"> <?=$this->Form->input("jyucyu_no",["type"=>"text","maxlength"=>10,"label"=>"受注番号："]) ?></div>
+        <div class="margin_left_10"> <?=$this->Form->input("work_no",["type"=>"text","maxlength"=>10,"label"=>"作業カード番号："]) ?></div>
         <h3>EXCELへ書込み</h3>
         <div class="margin_left_10"> <?=$this->Form->input("biko",["type"=>"text","maxlength"=>50,"label"=>"引き取り予定日："]) ?> </div>
           <input type="hidden" name="btn_nm">

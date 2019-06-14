@@ -43,6 +43,11 @@ header {
 	border-right: 2px solid #cbcbcb;
 }
 
+.inline_blk{
+	/* position: relative; */
+	display: inline-block;
+}
+
 #wrapper {
   width : 100% ;
 }
@@ -122,8 +127,7 @@ header {
   color: #000000;
 }
 
-
-.input_search{
+.margin_left_10{
 	margin-left: 10px;
 }
 
