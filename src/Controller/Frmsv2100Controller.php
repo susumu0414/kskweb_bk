@@ -32,8 +32,8 @@ class Frmsv2100Controller extends AppController
   }
 
   public function getAjaxData() {
-    // $this->autoRender = FALSE;
-    // if($this->request->is('ajax')) {
+    $this->autoRender = FALSE;
+    if($this->request->is('ajax')) {
       $result = [];
 
       $connection = ConnectionManager::get('kskdb');
@@ -43,8 +43,9 @@ class Frmsv2100Controller extends AppController
 
       // 検索結果をセット
       header('Content-Type: application/json');
-      echo json_encode($result);
-    // }
+      // echo json_encode($result);
+      $this->response->body(json_encode($result));
+    }
   }
 
   private function createSql($objParam){
@@ -99,7 +100,6 @@ class Frmsv2100Controller extends AppController
     $strSQL = $strSQL . "  TU.den_no,";
     $strSQL = $strSQL . "  TUM.row_no;";
 
-    $this->log("くえりー１".$strSQL, LOG_DEBUG);
     return $strSQL;
   }
 }

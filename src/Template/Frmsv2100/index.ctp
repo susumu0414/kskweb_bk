@@ -1,5 +1,6 @@
 <!-- レイアウトファイルでページごとのjsファイルを読み込む -->
 <?= $this->Html->script('Frmsv2100',['block' => true]) ?>
+
 <div id="wrapper">
   <div id="main">
     <div id="page_title">
@@ -12,19 +13,21 @@
           'url' => ['controller' => 'Frmsv2100', 'action' => 'index'],
           'name' => 'form_input','id' => 'form_input'])
       ?>
-        <div class="inline_blk margin_left_10"> 売上日(From)：</div>
-        <div class="inline_blk"><?=$this->Form->input("YMD_From",["type"=>"text","label"=>false,"class"=>"float_left"]) ?></div>
-        <br>
-        <div class="inline_blk margin_left_10">売上日(To)：</div>
-        <div class="inline_blk"><?=$this->Form->input("YMD_To",["type"=>"text","label"=>false]) ?></div>
-        <h3>EXCELへ書込み</h3>
-        <div class="inline_blk margin_left_10">引き取り予定日：</div>
-        <div class="inline_blk"><?=$this->Form->input("biko",["type"=>"text","maxlength"=>50,"label"=>false]) ?></div>
-        <input type="hidden" name="btn_nm">
-        <br>
-        <a class="square_btn" href="" id="btn_search" >検索</a>
-        <a class="square_print_btn" HREF="" onclick="form_input.btn_nm.value='btn_print';document.form_input.submit();return false;">印刷</a>
-        <?=$this->Form->end() ?>
+      <table id="tbl_search">
+        <tr>
+        <td><div class="inline_blk margin_left_10"> 売上日(From)：</div></td>
+        <td><div class="inline_blk"><?=$this->Form->input("YMD_From",["type"=>"text","label"=>false,"class"=>"float_left"]) ?></div></td>
+        <td><div class="inline_blk margin_left_10">売上日(To)：</div></td>
+        <td><div class="inline_blk"><?=$this->Form->input("YMD_To",["type"=>"text","label"=>false]) ?></div></td>
+        </tr>
+        <tr>
+          <td><div class="inline_blk margin_left_10"> 伝票番号：</div></td>
+          <td><div class="inline_blk"><?=$this->Form->input("den_no",["type"=>"text","maxlength"=>10,"label"=>false]) ?></div></td>
+        </tr>
+      </table>
+      <input type="hidden" name="btn_nm">
+      <a class="square_btn" href="" id="btn_search" >検索</a>
+      <?=$this->Form->end() ?>
     </div>
 
     <div id="contents_result">

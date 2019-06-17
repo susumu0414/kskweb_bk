@@ -66,7 +66,8 @@ class Frmsv0110Controller extends AppController
       $result = $connection->query($query)->fetchAll('assoc');
       // 検索結果をセット
       header('Content-Type: application/json');
-      echo json_encode($result);
+      // echo json_encode($result);
+      $this->response->body(json_encode($result));
     }
   }
 
