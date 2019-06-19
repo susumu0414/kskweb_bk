@@ -1,4 +1,15 @@
 $(document).ready(function(){
+  // デイトピッカーの表示処理
+  // $("#datepicker").datepicker();
+  $(".datepicker").datepicker({
+    showOn:"button",
+    buttonText:"▼",
+    changeYear:true,
+    changeMonth:true
+  });
+  // $("#datepicker").datepicker("option", "buttonImageOnly", true);
+  // $("#datepicker").datepicker("option", "buttonImage", 'ico_calendar.png');
+
   $("#btn_search").click(function(){
     // 処理前に Loading 画像を表示
     dispLoading("処理中...");

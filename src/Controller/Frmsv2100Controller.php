@@ -28,6 +28,8 @@ class Frmsv2100Controller extends AppController
     else{
       // ページ名称をセット
       $this->set('page_nm',$ret);
+      // システム日付をセット
+      $this->set('sysdate',date("Y/m/d"));
     }
   }
 
@@ -49,6 +51,7 @@ class Frmsv2100Controller extends AppController
   }
 
   private function createSql($objParam){
+
     $strSQL = "";
 
     $strSQL = $strSQL . "SELECT";
@@ -86,11 +89,11 @@ class Frmsv2100Controller extends AppController
     $strSQL = $strSQL . "1=1 ";
     $strSQL = $strSQL . " AND TU.tk_cd = '897'";
     if (isset($objParam['YMD_From']) && $objParam['YMD_From']<>"" && $objParam['YMD_To']==="") {
-      $strSQL = $strSQL . " AND TU.ymd = '".$objParam['YMD_From'] . "' ";
+      $strSQL = $strSQL . " AND TU.ymd = '".str_replace('/','',$objParam['YMD_From']) . "' ";
     }
     if (isset($objParam['YMD_From']) && $objParam['YMD_From']<>"" && $objParam['YMD_To']<>"") {
-      $strSQL = $strSQL . " AND TU.ymd >= '".$objParam['YMD_From'] . "' ";
-      $strSQL = $strSQL . " AND TU.ymd <= '".$objParam['YMD_To'] . "' ";
+      $strSQL = $strSQL . " AND TU.ymd >= '".str_replace('/','',$objParam['YMD_From']) . "' ";
+      $strSQL = $strSQL . " AND TU.ymd <= '".str_replace('/','',$objParam['YMD_To']) . "' ";
     }
     if (isset($objParam['den_no']) && $objParam['den_no']<>"") {
       $strSQL = $strSQL . " AND TU.den_no = '".$objParam['den_no'] . "' ";
@@ -99,7 +102,6 @@ class Frmsv2100Controller extends AppController
     $strSQL = $strSQL . "  TU.ymd,";
     $strSQL = $strSQL . "  TU.den_no,";
     $strSQL = $strSQL . "  TUM.row_no;";
-
     return $strSQL;
   }
 }

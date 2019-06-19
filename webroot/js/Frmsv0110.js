@@ -23,9 +23,17 @@ $(document).ready(function(){
     // ・サーバからステータスコード400以上が返ってきたとき
     // ・ステータスコードは正常だが、dataTypeで定義したようにパース出来なかったとき
     // ・通信に失敗したとき
-    .fail(function () {
-      console.log("失敗");
-    })
+    // .fail(function () {
+    //   console.log("失敗");
+    // })
+    .fail(function(jqXHR, textStatus, errorThrown) {
+                          $("#XMLHttpRequest").html("XMLHttpRequest : " + jqXHR.status);
+                          $("#textStatus").html("textStatus : " + textStatus);
+                          $("#errorThrown").html("errorThrown : " + errorThrown);
+                          console.log(jqXHR.status);
+                          console.log(textStatus);
+                          console.log(errorThrown);
+                     })
     // 処理終了時
     .always(function(response) {
       // Lading 画像を消す

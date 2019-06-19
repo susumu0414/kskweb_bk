@@ -24,6 +24,7 @@
       <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.4/css/buttons.dataTables.css"/>
       <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedcolumns/3.2.5/css/fixedColumns.dataTables.css"/>
       <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.2.6/css/select.dataTables.css"/>
+      <!-- <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"> -->
 
       <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -37,14 +38,18 @@
       <script type="text/javascript" src="https://cdn.datatables.net/select/1.2.6/js/dataTables.select.js"></script>
       <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
       <!-- サイドメニュー用jsファイル読み込み -->
       <?= $this->Html->script('side_menue',['block' => true]) ?>
+      <!-- デイとピッカー日本語化用jsファイル読み込み -->
+      <?= $this->Html->script('datepicker-ja.js',['block' => true]) ?>
 
       <title> <?= $this->fetch('title') ?> </title>
       <?= $this->Html->meta('icon') ?>
 
       <?= $this->Html->css('kisaka.css') ?>
+      <?= $this->Html->css('//code.jquery.com/ui/1.12.1/themes/redmond/jquery-ui.css',['block' => true]) ?>
       <?= $this->fetch('meta') ?>
       <?= $this->fetch('css') ?>
       <!-- 各ページごとのテンプレートファイルで呼び出すjsファイルを定義 -->

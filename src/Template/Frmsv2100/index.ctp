@@ -16,9 +16,9 @@
       <table id="tbl_search">
         <tr>
         <td><div class="inline_blk margin_left_10"> 売上日(From)：</div></td>
-        <td><div class="inline_blk"><?=$this->Form->input("YMD_From",["type"=>"text","label"=>false,"class"=>"float_left"]) ?></div></td>
+        <td><div class="inline_blk"><?=$this->Form->input("YMD_From",["type"=>"text","label"=>false,"class"=>"float_left datepicker","default"=>$sysdate,"maxlength"=>10,"autofocus"=>"autofocus"]) ?></div></td>
         <td><div class="inline_blk margin_left_10">売上日(To)：</div></td>
-        <td><div class="inline_blk"><?=$this->Form->input("YMD_To",["type"=>"text","label"=>false]) ?></div></td>
+        <td><div class="inline_blk"><?=$this->Form->input("YMD_To",["type"=>"text","label"=>false,"class"=>"float_left datepicker","maxlength"=>10]) ?></div></td>
         </tr>
         <tr>
           <td><div class="inline_blk margin_left_10"> 伝票番号：</div></td>
@@ -28,6 +28,7 @@
       <input type="hidden" name="btn_nm">
       <a class="square_btn" href="" id="btn_search" >検索</a>
       <?=$this->Form->end() ?>
+      <!-- <input type="text" id="datepicker"> -->
     </div>
 
     <div id="contents_result">

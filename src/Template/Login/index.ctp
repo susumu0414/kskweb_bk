@@ -28,9 +28,16 @@
                         'class' =>'animated fadeInLeftBig  logo-animation2',
                         'id' =>'form_input',
                         'name' => 'form_input'])?>
-          <?=$this->Form->input('tan_cd',array('type'=>'text','label' => 'ログインID：','maxlength'=>15)) ?>
-          <?=$this->Form->input('user_pass',array('type'=>'password','label' => 'パスワード：','maxlength'=>15)) ?>
-
+          <table>
+            <tr>
+            <td><div> ログインID：</div></td>
+            <td><?=$this->Form->input('tan_cd',array('type'=>'text','label' => false,'maxlength'=>15,'autofocus'=>'autofocus')) ?></td>
+            </tr>
+            <tr>
+            <td><div> パスワード：</div></td>
+            <td><?=$this->Form->input('user_pass',array('type'=>'password','label' => false,'maxlength'=>15)) ?></td>
+            </tr>
+          </table>
           <input type="hidden" name="btn_nm" value="btn_login">
           <a class="square_btn" href="#" id="btn_login" >ログイン</a>
         <?=$this->Form->end()?>

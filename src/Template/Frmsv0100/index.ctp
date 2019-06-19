@@ -13,7 +13,7 @@
           'name' => 'form_input','id' => 'form_input'
         ]
       ) ?>
-        <div class="margin_left_10"> <?=$this->Form->input("jyucyu_no",["type"=>"text","maxlength"=>10,"label"=>"受注番号："]) ?></div>
+        <div class="margin_left_10"> <?=$this->Form->input("jyucyu_no",["type"=>"text","maxlength"=>10,"label"=>"受注番号：","autofocus"=>"autofocus"]) ?></div>
         <h3>EXCELへ書込み</h3>
         <div class="margin_left_10"> <?=$this->Form->input("biko",["type"=>"text","maxlength"=>50,"label"=>"引き取り予定日："]) ?> </div>
           <input type="hidden" name="btn_nm">
