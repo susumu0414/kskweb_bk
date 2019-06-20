@@ -10,7 +10,7 @@
       <h3>検索条件入力</h3>
       <?=$this->Form->create(null,[
           'type' => 'post',
-          'url' => ['controller' => 'Frmsv0130', 'action' => 'index'],
+          'url' => ['controller' => 'Frmsv0130', 'action' => 'outputCSV'],
           'name' => 'form_input','id' => 'form_input'])
       ?>
       <table id="tbl_search">
@@ -28,11 +28,12 @@
         </tr>
         <tr>
           <td><div class="inline_blk margin_left_10"> 対応状況：</div></td>
-          <td><div class="inline_blk"><?=$this->Form->input("status_id",["type"=>"select","options"=>$order_status_list,"label"=>false]) ?></div></td>
+          <td><div class="inline_blk"><?=$this->Form->input("status_id",["type"=>"select","options"=>$order_status_list,"label"=>false,"empty"=>true]) ?></div></td>
         </tr>
       </table>
       <input type="hidden" name="btn_nm">
       <a class="square_btn" href="" id="btn_search" >検索</a>
+      <a class="square_print_btn" HREF="" onclick="form_input.btn_nm.value='btn_csv';document.form_input.submit();return false;">csv出力</a>
       <?=$this->Form->end() ?>
       <!-- <input type="text" id="datepicker"> -->
     </div>
