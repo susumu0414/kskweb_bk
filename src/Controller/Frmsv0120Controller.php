@@ -4,7 +4,7 @@ namespace App\Controller;
 use App\Controller\AppController;
 use Cake\Datasource\ConnectionManager;
 
-class Frmsv2100Controller extends AppController
+class Frmsv0120Controller extends AppController
 {
   public function initialize() {
     parent::initialize();

@@ -20,7 +20,7 @@ $(document).ready(function(){
     console.log($formData);
     // Ajax通信を開始する
     $.ajax({
-      url: "/kskweb/Frmsv2100/getAjaxData",
+      url: "/kskweb/Frmsv0120/getAjaxData",
       type: "POST", // getかpostを指定(デフォルトは前者)
       dataType: 'json', // 「json」を指定するとresponseがJSONとしてパースされたオブジェクトになる
       data: $formData,
