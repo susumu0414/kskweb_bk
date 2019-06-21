@@ -49,4 +49,9 @@ class CommonComponent extends Component
         return false;
       }
     }
+
+    public function registOpehis($file_name){
+      
+    }
+
 }
