@@ -50,7 +50,10 @@ class Frmsv0100Controller extends AppController
       $query=$this->createSql($this->request->data);
       $result = $connection->query($query)->fetchAll('assoc');
 
+      // EXCELファイル出力
       $this->outputExcel($result,$this->request->data);
+      // 操作履歴テーブルに登録
+      $this->Common->registOpehis(basename(__FILE__),implode($this->request->data),$query);
     }
   }
 

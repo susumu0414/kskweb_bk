@@ -11,15 +11,8 @@ use Cake\ORM\Entity;
  * @property string $tan_cd
  * @property string $tan_nm
  * @property string $page_nm
- * @property string $ope_cat
- * @property string $key1
- * @property string $key2
- * @property string $key3
- * @property string $key4
- * @property string $value1
- * @property string $value2
- * @property string $value3
- * @property string $value4
+ * @property string|null $param
+ * @property string|null $query
  */
 class TkOpehisFile extends Entity
 {
@@ -38,14 +31,7 @@ class TkOpehisFile extends Entity
         'tan_cd' => true,
         'tan_nm' => true,
         'page_nm' => true,
-        'ope_cat' => true,
-        'key1' => true,
-        'key2' => true,
-        'key3' => true,
-        'key4' => true,
-        'value1' => true,
-        'value2' => true,
-        'value3' => true,
-        'value4' => true
+        'param' => true,
+        'query' => true
     ];
 }

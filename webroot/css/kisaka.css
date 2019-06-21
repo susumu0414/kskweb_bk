@@ -131,6 +131,18 @@ header {
 	margin-left: 10px;
 }
 
+.txt_width_130{
+  width: 130px;
+}
+
+.txt_width_300{
+  width: 300px;
+}
+
+.txt_width_400{
+  width: 400px;
+}
+
 
 /* ↓↓↓↓↓ サイドメニュー用 ↓↓↓↓↓ */
 #side_menue ul {

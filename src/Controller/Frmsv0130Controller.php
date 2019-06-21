@@ -180,6 +180,9 @@ class Frmsv0130Controller extends AppController
 
     // CSVファイル出力
     $this->response->body($csv);
+    // 操作履歴テーブルに登録
+    $this->Common->registOpehis(basename(__FILE__),implode($this->request->data),$query);
+
     return;
   }
 

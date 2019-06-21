@@ -20,6 +20,9 @@ use Cake\Validation\Validator;
  */
 class TkOpehisFilesTable extends Table
 {
+  public static function defaultConnectionName() {
+          return 'kskweb_db';
+  }
 
     /**
      * Initialize method
@@ -72,58 +75,14 @@ class TkOpehisFilesTable extends Table
             ->allowEmptyString('page_nm', false);
 
         $validator
-            ->scalar('ope_cat')
-            ->maxLength('ope_cat', 2)
-            ->requirePresence('ope_cat', 'create')
-            ->allowEmptyString('ope_cat', false);
+            ->scalar('param')
+            ->maxLength('param', 1000)
+            ->allowEmptyString('param');
 
         $validator
-            ->scalar('key1')
-            ->maxLength('key1', 10)
-            ->requirePresence('key1', 'create')
-            ->allowEmptyString('key1', false);
-
-        $validator
-            ->scalar('key2')
-            ->maxLength('key2', 10)
-            ->requirePresence('key2', 'create')
-            ->allowEmptyString('key2', false);
-
-        $validator
-            ->scalar('key3')
-            ->maxLength('key3', 10)
-            ->requirePresence('key3', 'create')
-            ->allowEmptyString('key3', false);
-
-        $validator
-            ->scalar('key4')
-            ->maxLength('key4', 10)
-            ->requirePresence('key4', 'create')
-            ->allowEmptyString('key4', false);
-
-        $validator
-            ->scalar('value1')
-            ->maxLength('value1', 256)
-            ->requirePresence('value1', 'create')
-            ->allowEmptyString('value1', false);
-
-        $validator
-            ->scalar('value2')
-            ->maxLength('value2', 256)
-            ->requirePresence('value2', 'create')
-            ->allowEmptyString('value2', false);
-
-        $validator
-            ->scalar('value3')
-            ->maxLength('value3', 256)
-            ->requirePresence('value3', 'create')
-            ->allowEmptyString('value3', false);
-
-        $validator
-            ->scalar('value4')
-            ->maxLength('value4', 256)
-            ->requirePresence('value4', 'create')
-            ->allowEmptyString('value4', false);
+            ->scalar('query')
+            ->maxLength('query', 4000)
+            ->allowEmptyString('query');
 
         return $validator;
     }

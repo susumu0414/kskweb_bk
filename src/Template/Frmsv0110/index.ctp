@@ -13,9 +13,9 @@
           'name' => 'form_input','id' => 'form_input'
         ]
       ) ?>
-        <div class="margin_left_10"> <?=$this->Form->input("work_no",["type"=>"text","maxlength"=>10,"label"=>"作業カード番号：","autofocus"=>"autofocus"]) ?></div>
+        <div class="margin_left_10"> <?=$this->Form->input("work_no",["type"=>"text","class"=>"txt_width_130","maxlength"=>10,"label"=>"作業カード番号：","autofocus"=>"autofocus"]) ?></div>
         <h3>EXCELへ書込み</h3>
-        <div class="margin_left_10"> <?=$this->Form->input("biko",["type"=>"text","maxlength"=>50,"label"=>"引き取り予定日："]) ?> </div>
+        <div class="margin_left_10"> <?=$this->Form->input("biko",["type"=>"text","class"=>"txt_width_400","maxlength"=>50,"label"=>"引き取り予定日："]) ?> </div>
           <input type="hidden" name="btn_nm">
           <a class="square_btn" href="" id="btn_search" >検索</a>
           <a class="square_print_btn" HREF="" onclick="form_input.btn_nm.value='btn_print';document.form_input.submit();return false;">印刷</a>
