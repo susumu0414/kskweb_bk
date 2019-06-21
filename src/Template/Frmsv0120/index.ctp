@@ -16,9 +16,9 @@
       <table id="tbl_search">
         <tr>
         <td><div class="inline_blk margin_left_10"> 売上日(From)：</div></td>
-        <td><div class="inline_blk"><?=$this->Form->input("YMD_From",["type"=>"text","label"=>false,"class"=>"float_left datepicker","default"=>$sysdate,"class"=>"txt_width_130","maxlength"=>10,"autofocus"=>"autofocus"]) ?></div></td>
+        <td><div class="inline_blk"><?=$this->Form->input("YMD_From",["type"=>"text","label"=>false,"class"=>"float_left txt_width_130 datepicker","default"=>$sysdate,"maxlength"=>10,"autofocus"=>"autofocus"]) ?></div></td>
         <td><div class="inline_blk margin_left_10">売上日(To)：</div></td>
-        <td><div class="inline_blk"><?=$this->Form->input("YMD_To",["type"=>"text","label"=>false,"class"=>"float_left datepicker","class"=>"txt_width_130","maxlength"=>10]) ?></div></td>
+        <td><div class="inline_blk"><?=$this->Form->input("YMD_To",["type"=>"text","label"=>false,"class"=>"float_left txt_width_130 datepicker","maxlength"=>10]) ?></div></td>
         </tr>
         <tr>
           <td><div class="inline_blk margin_left_10"> 伝票番号：</div></td>
